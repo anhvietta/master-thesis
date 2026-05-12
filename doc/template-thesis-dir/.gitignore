@@ -1,0 +1,11 @@
+template.pdf
+*.blg
+*.bbl
+*.thm
+*.aux
+*.blg
+*.toc
+*.out
+*.log
+*.fls
+*.fdb_latexmk

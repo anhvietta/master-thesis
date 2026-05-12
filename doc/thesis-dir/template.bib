@@ -1,0 +1,616 @@
+% This is an example file it is used to show the formatting and you can use it
+% directly to organise your bibliography. But probably you will be using some
+% GUI to manage them.
+
+@article{10.1093/nar/gky092,
+  author = {UniProt Consortium, The},
+  title = {UniProt: the universal protein knowledgebase},
+  journal = {Nucleic Acids Res.},
+  volume = {46},
+  number = {5},
+  pages = {2699--2699},
+  year = {2018},
+  month = {03},
+  abstract = {Nucleic Acids Research (2017) 45: D158–D169, https://doi.org/10.1093/nar/gkw1099The authors wish to make the following correction to their article. Co-author Alexandre Renaux affiliated with the EMBL-EBI was mistakenly omitted from the list of authors. His name has been added to the full list of authors in the Acknowledgement section of the published article.},
+  issn = {0305-1048},
+  doi = {10.1093/nar/gky092},
+  url = {https://doi.org/10.1093/nar/gky092},
+  eprint = {https://academic.oup.com/nar/article-pdf/46/5/2699/24388239/gky092.pdf},
+}
+
+@article{10.1093/bioinformatics/btad225,
+    author = {Marchet, Camille and Limasset, Antoine},
+    title = {Scalable sequence database search using partitioned aggregated Bloom comb trees},
+    journal = {Bioinformatics},
+    volume = {39},
+    number = {Supplement\_1},
+    pages = {i252--i259},
+    year = {2023},
+    month = {06},
+    abstract = {The Sequence Read Archive public database has reached 45 petabytes of raw sequences and doubles its nucleotide content every 2 years. Although BLAST-like methods can routinely search for a sequence in a small collection of genomes, making searchable immense public resources accessible is beyond the reach of alignment-based strategies. In recent years, abundant literature tackled the task of finding a sequence in extensive sequence collections using k-mer-based strategies. At present, the most scalable methods are approximate membership query data structures that combine the ability to query small signatures or variants while being scalable to collections up to 10 000 eukaryotic samples. Results. Here, we present PAC, a novel approximate membership query data structure for querying collections of sequence datasets. PAC index construction works in a streaming fashion without any disk footprint besides the index itself. It shows a 3–6 fold improvement in construction time compared to other compressed methods for comparable index size. A PAC query can need single random access and be performed in constant time in favorable instances. Using limited computation resources, we built PAC for very large collections. They include 32 000 human RNA-seq samples in 5 days, the entire GenBank bacterial genome collection in a single day for an index size of 3.5 TB. The latter is, to our knowledge, the largest sequence collection ever indexed using an approximate membership query structure. We also showed that PAC’s ability to query 500 000 transcript sequences in less than an hour.PAC’s open-source software is available at https://github.com/Malfoy/PAC.},
+    issn = {1367-4811},
+    doi = {10.1093/bioinformatics/btad225},
+    url = {https://doi.org/10.1093/bioinformatics/btad225},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/39/Supplement\_1/i252/50741675/btad225.pdf},
+}
+
+@article{rives2021biological,
+  title   = {Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences},
+  author  = {Rives, Alexander and Meier, Joshua and Sercu, Tom and Goyal, Siddharth and Lin, Zeming and Liu, Jason and Guo, Demi and Ott, Myle and Zitnick, C. Lawrence and Ma, Jerry and Fergus, Rob},
+  journal = {Proc. Natl. Acad. Sci. U.S.A.},
+  volume  = {118},
+  number  = {15},
+  pages   = {e2016239118},
+  year    = {2021},
+  doi     = {10.1073/pnas.2016239118}
+}
+
+@article{elnaggar2022prottrans,
+  title   = {ProtTrans: Toward Understanding the Language of Life Through Self-Supervised Learning},
+  author  = {Elnaggar, Ahmed and Heinzinger, Michael and Dallago, Christian and Rehawi, Ghalia and Wang, Yu and Jones, Llion and Gibbs, Tom and Feher, Tamas and Angerer, Christoph and Steinegger, Martin et al.},
+  journal = {IEEE Trans. Pattern Anal. Mach. Intell.},
+  volume  = {44},
+  number  = {10},
+  pages   = {7112--7127},
+  year    = {2022},
+  doi     = {10.1109/TPAMI.2021.3095381}
+}
+
+@inproceedings{nearestneighbormeaning,
+author="Beyer, Kevin
+and Goldstein, Jonathan
+and Ramakrishnan, Raghu
+and Shaft, Uri",
+editor="Beeri, Catriel
+and Buneman, Peter",
+title="When Is ``Nearest Neighbor'' Meaningful?",
+booktitle="Database Theory --- ICDT'99",
+year="1999",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="217--235",
+abstract="We explore the effect of dimensionality on the ``nearest neighbor'' problem. We show that under a broad set of conditions (much broader than independent and identically distributed dimensions), as dimensionality increases, the distance to the nearest data point approaches the distance to the farthest data point. To provide a practical perspective, we present empirical results on both real and synthetic data sets that demonstrate that this effect can occur for as few as 10--15 dimensions.",
+isbn="978-3-540-49257-3"
+}
+
+@article{indyk1998approximate,
+  title={Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality},
+  author={Sariel Har-Peled and Piotr Indyk and Rajeev Motwani},
+  journal={Theory Comput.},
+  year={2012},
+  volume={8},
+  pages={321--350},
+  url={https://api.semanticscholar.org/CorpusID:6110572}
+}
+
+@article{10.1145/361002.361007,
+author = {Bentley, Jon Louis},
+title = {Multidimensional binary search trees used for associative searching},
+year = {1975},
+issue_date = {Sept. 1975},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {18},
+number = {9},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/361002.361007},
+doi = {10.1145/361002.361007},
+abstract = {This paper develops the multidimensional binary search tree (or k-d tree, where k is the dimensionality of the search space) as a data structure for storage of information to be retrieved by associative searches. The k-d tree is defined and examples are given. It is shown to be quite efficient in its storage requirements. A significant advantage of this structure is that a single data structure can handle many types of queries very efficiently. Various utility algorithms are developed; their proven average running times in an n record file are: insertion, O(log n); deletion of the root, O(n(k-1)/k); deletion of a random node, O(log n); and optimization (guarantees logarithmic performance of searches), O(n log n). Search algorithms are given for partial match queries with t keys specified [proven maximum running time of O(n(k-t)/k)] and for nearest neighbor queries [empirically observed average running time of O(log n).] These performances far surpass the best currently known algorithms for these tasks. An algorithm is presented to handle any general intersection query. The main focus of this paper is theoretical. It is felt, however, that k-d trees could be quite useful in many applications, and examples of potential uses are given.},
+journal = {Commun. ACM},
+month = sep,
+pages = {509--517},
+numpages = {9},
+keywords = {associative retrieval, attribute, binary search trees, binary tree insertion, information retrieval system, intersection queries, key, nearest neighbor queries, partial match queries}
+}
+
+@techreport{Omohundro2009FiveBC,
+  title       = {Five Balltree Construction Algorithms},
+  author      = {Omohundro, Stephen M.},
+  institution = {International Computer Science Institute},
+  year        = {1989},
+  number      = {TR-89-063}
+}
+
+@inproceedings{10.5555/313559.313789,
+author = {Yianilos, Peter N.},
+title = {Data structures and algorithms for nearest neighbor search in general metric spaces},
+year = {1993},
+isbn = {0898713137},
+publisher = {Society for Industrial and Applied Mathematics},
+address = {USA},
+booktitle = {Proc. ACM-SIAM Symp. Discrete Algorithms (SODA)},
+pages = {311--321},
+numpages = {11},
+keywords = {associative memory, clustering, computational geometry, metric space, nearest neighbor, pattern recognition, randomized methods},
+location = {Austin, Texas, USA},
+series = {SODA '93}
+}
+
+@inproceedings{10.5555/645504.656414,
+author = {Aggarwal, Charu C. and Hinneburg, Alexander and Keim, Daniel A.},
+title = {On the Surprising Behavior of Distance Metrics in High Dimensional Spaces},
+year = {2001},
+isbn = {3540414568},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {In recent years, the effect of the curse of high dimensionality has been studied in great detail on several problems such as clustering, nearest neighbor search, and indexing. In high dimensional space the data becomes sparse, and traditional indexing and algorithmic techniques fail from a efficiency and/or effectiveness perspective. Recent research results show that in high dimensional space, the concept of proximity, distance or nearest neighbor may not even be qualitatively meaningful. In this paper, we view the dimensionality curse from the point of view of the distance metrics which are used to measure the similarity between objects. We specifically examine the behavior of the commonly used Lk norm and show that the problem of meaningfulness in high dimensionality is sensitive to the value of k. For example, this means that the Manhattan distance metric (L1 norm) is consistently more preferable than the Euclidean distance metric (L2 norm) for high dimensional data mining applications. Using the intuition derived from our analysis, we introduce and examine a natural extension of the Lk norm to fractional distance metrics. We show that the fractional distance metric provides more meaningful results both from the theoretical and empirical perspective. The results show that fractional distance metrics can significantly improve the effectiveness of standard clustering algorithms such as the k-means algorithm.},
+booktitle = {Proceedings of the 8th International Conference on Database Theory},
+pages = {420--434},
+numpages = {15},
+series = {ICDT '01}
+}
+
+@inproceedings{10.1145/276698.276876,
+author = {Indyk, Piotr and Motwani, Rajeev},
+title = {Approximate nearest neighbors: towards removing the curse of dimensionality},
+year = {1998},
+isbn = {0897919629},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/276698.276876},
+doi = {10.1145/276698.276876},
+booktitle = {Proceedings of the Thirtieth Annual ACM Symposium on Theory of Computing},
+pages = {604--613},
+numpages = {10},
+location = {Dallas, Texas, USA},
+series = {STOC '98}
+}
+
+@inproceedings{4587638,
+  author={Silpa-Anan, Chanop and Hartley, Richard},
+  booktitle={Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)},
+  title={Optimised KD-trees for fast image descriptor matching},
+  year={2008},
+  volume={},
+  number={},
+  pages={1--8},
+  keywords={Application software;Image recognition;Image databases;Indexing;Principal component analysis;Binary search trees;Binary trees;Computer vision;Image retrieval;Search methods},
+  doi={10.1109/CVPR.2008.4587638}}
+
+@article{10.1109/TPAMI.2018.2889473,
+author = {Malkov, Yu A. and Yashunin, D. A.},
+title = {Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs},
+year = {2020},
+issue_date = {April 2020},
+publisher = {IEEE Computer Society},
+address = {USA},
+volume = {42},
+number = {4},
+issn = {0162-8828},
+url = {https://doi.org/10.1109/TPAMI.2018.2889473},
+doi = {10.1109/TPAMI.2018.2889473},
+abstract = {We present a new approach for the approximate K-nearest neighbor search based on navigable small world graphs with controllable hierarchy (Hierarchical NSW, HNSW). The proposed solution is fully graph-based, without any need for additional search structures (typically used at the coarse search stage of the most proximity graph techniques). Hierarchical NSW incrementally builds a multi-layer structure consisting of a hierarchical set of proximity graphs (layers) for nested subsets of the stored elements. The maximum layer in which an element is present is selected randomly with an exponentially decaying probability distribution. This allows producing graphs similar to the previously studied Navigable Small World (NSW) structures while additionally having the links separated by their characteristic distance scales. Starting the search from the upper layer together with utilizing the scale separation boosts the performance compared to NSW and allows a logarithmic complexity scaling. Additional employment of a heuristic for selecting proximity graph neighbors significantly increases performance at high recall and in case of highly clustered data. Performance evaluation has demonstrated that the proposed general metric space search index is able to strongly outperform previous opensource state-of-the-art vector-only approaches. Similarity of the algorithm to the skip list structure allows straightforward balanced distributed implementation.},
+journal = {IEEE Trans. Pattern Anal. Mach. Intell.},
+month = apr,
+pages = {824--836},
+numpages = {13}
+}
+
+@article{belkin2003laplacian,
+  title={Laplacian eigenmaps for dimensionality reduction and data representation},
+  author={Belkin, Mikhail and Niyogi, Partha},
+  journal={Neural Comput},
+  volume={15},
+  number={6},
+  pages={1373--1396},
+  year={2003},
+  publisher={MIT Press}
+}
+
+@misc{khattab2020colbertefficienteffectivepassage,
+  title={ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT},
+  author={Omar Khattab and Matei Zaharia},
+  year={2020},
+  eprint={2004.12832},
+  eprinttype={arXiv},
+  primaryClass={cs.IR},
+  url={https://arxiv.org/abs/2004.12832},
+}
+
+@article{10.1093/bioinformatics/btm098,
+    author = {Suzek, Baris E. and Huang, Hongzhan and McGarvey, Peter and Mazumder, Raja and Wu, Cathy H.},
+    title = {UniRef: comprehensive and non-redundant UniProt reference clusters},
+    journal = {Bioinformatics},
+    volume = {23},
+    number = {10},
+    pages = {1282--1288},
+    year = {2007},
+    month = {03},
+    abstract = {Motivation: Redundant protein sequences in biological databases hinder sequence similarity searches and make interpretation of search results difficult. Clustering of protein sequence space based on sequence similarity helps organize all sequences into manageable datasets and reduces sampling bias and overrepresentation of sequences.Results: The UniRef (UniProt Reference Clusters) provide clustered sets of sequences from the UniProt Knowledgebase (UniProtKB) and selected UniProt Archive records to obtain complete coverage of sequence space at several resolutions while hiding redundant sequences. Currently covering \&gt;4 million source sequences, the UniRef100 database combines identical sequences and subfragments from any source organism into a single UniRef entry. UniRef90 and UniRef50 are built by clustering UniRef100 sequences at the 90 or 50\% sequence identity levels. UniRef100, UniRef90 and UniRef50 yield a database size reduction of ∼10, 40 and 70\%, respectively, from the source sequence set. The reduced redundancy increases the speed of similarity searches and improves detection of distant relationships. UniRef entries contain summary cluster and membership information, including the sequence of a representative protein, member count and common taxonomy of the cluster, the accession numbers of all the merged entries and links to rich functional annotation in UniProtKB to facilitate biological discovery. UniRef has already been applied to broad research areas ranging from genome annotation to proteomics data analysis.Availability: UniRef is updated biweekly and is available for online search and retrieval at http://www.uniprot.org, as well as for download at ftp://ftp.uniprot.org/pub/databases/uniprot/unirefContact:  bes23@georgetown.eduSupplementary information: Supplementary data are available at Bioinformatics online.},
+    issn = {1367-4803},
+    doi = {10.1093/bioinformatics/btm098},
+    url = {https://doi.org/10.1093/bioinformatics/btm098},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/23/10/1282/49812789/bioinformatics_23_10_1282.pdf},
+}
+
+@article{Llinares-Lopez2021.11.15.468653,
+	abstract = {Protein sequence alignment is a key component of most bioinformatics pipelines to study the structures and functions of proteins. Aligning highly divergent sequences remains, however, a difficult task that current algorithms often fail to perform accurately, leaving many proteins or open reading frames poorly annotated. Here, we leverage recent advances in deep learning for language modelling and differentiable programming to propose DEDAL, a flexible model to align protein sequences and detect homologs. DEDAL is a machine learning-based model that learns to align sequences by observing large datasets of raw protein sequences and of correct alignments. Once trained, we show that DEDAL improves by up to two- or three-fold the alignment correctness over existing methods on remote homologs, and better discriminates remote homologs from evolutionarily unrelated sequences, paving the way to improvements on many downstream tasks relying on sequence alignment in structural and functional genomics.Competing Interest StatementAll authors are employees of Google.},
+	author = {Llinares-López, Felipe and Berthet, Quentin and Blondel, Mathieu and Teboul, Olivier and Vert, Jean-Philippe},
+	doi = {10.1101/2021.11.15.468653},
+	elocation-id = {2021.11.15.468653},
+	eprint = {https://www.biorxiv.org/content/early/2022/07/01/2021.11.15.468653.full.pdf},
+	journal = {Nat Methods},
+  volume = {20},
+  pages = {104--111},
+	publisher = {Cold Spring Harbor Laboratory},
+	title = {Deep embedding and alignment of protein sequences},
+	url = {https://www.biorxiv.org/content/early/2022/07/01/2021.11.15.468653},
+	year = {2022}
+}
+
+@article{10.1093/bib/bbae178,
+    author = {Ashrafzadeh, Sepehr and Golding, G Brian and Ilie, Silvana and Ilie, Lucian},
+    title = {Scoring alignments by embedding vector similarity},
+    journal = {Briefings in Bioinformatics},
+    volume = {25},
+    number = {3},
+    pages = {bbae178},
+    year = {2024},
+    month = {05},
+    abstract = {Sequence similarity is of paramount importance in biology, as similar sequences tend to have similar function and share common ancestry. Scoring matrices, such as PAM or BLOSUM, play a crucial role in all bioinformatics algorithms for identifying similarities, but have the drawback that they are fixed, independent of context. We propose a new scoring method for amino acid similarity that remedies this weakness, being contextually dependent. It relies on recent advances in deep learning architectures that employ self-supervised learning in order to leverage the power of enormous amounts of unlabelled data to generate contextual embeddings, which are vector representations for words. These ideas have been applied to protein sequences, producing embedding vectors for protein residues. We propose the E-score between two residues as the cosine similarity between their embedding vector representations. Thorough testing on a wide variety of reference multiple sequence alignments indicate that the alignments produced using the new \$E\$-score method, especially ProtT5-score, are significantly better than those obtained using BLOSUM matrices. The new method proposes to change the way alignments are computed, with far-reaching implications in all areas of textual data that use sequence similarity. The program to compute alignments based on various \$E\$-scores is available as a web server at e-score.csd.uwo.ca. The source code is freely available for download from github.com/lucian-ilie/E-score.},
+    issn = {1477-4054},
+    doi = {10.1093/bib/bbae178},
+    url = {https://doi.org/10.1093/bib/bbae178},
+    eprint = {https://academic.oup.com/bib/article-pdf/25/3/bbae178/57366630/bbae178.pdf},
+}
+
+@article{embedding_based_alignment,
+    author = {Iovino, Benjamin and Ye, Yuzhen},
+    year = {2024},
+    month = {02},
+    pages = {85--85},
+    title = {Protein embedding based alignment},
+    volume = {25},
+    journal = {BMC bioinformatics},
+    doi = {10.1186/s12859-024-05699-5}
+}
+
+@article {Roddy2024.01.27.577580,
+	author = {Roddy, Jack W. and Rich, David H. and Wheeler, Travis J.},
+	title = {nail: software for high-speed, high-sensitivity protein sequence annotation},
+	elocation-id = {2024.01.27.577580},
+	year = {2024},
+	doi = {10.1101/2024.01.27.577580},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {{\textquotedblleft}Fast is fine, but accuracy is final.{\textquotedblright}-- Wyatt EarpBackground The extreme diversity of newly sequenced organisms and considerable scale of modern sequence databases lead to a tension between competing needs for sensitivity and speed in sequence annotation, with multiple tools displacing the venerable BLAST software suite on one axis or another. Alignment based on profile hidden Markov models (pHMMs) has demonstrated state of art sensitivity, while recent algorithmic advances have resulted in hyper-fast annotation tools with sensitivity close to that of BLAST.Results Here, we introduce a new tool that bridges the gap between advances in these two directions, reaching speeds comparable to fast annotation methods such as MMseqs2 while retaining most of the sensitivity offered by pHMMs. The tool, called nail, implements a heuristic approximation of the pHMM Forward/Backward (FB) algorithm by identifying a sparse subset of the cells in the FB dynamic programming matrix that contains most of the probability mass. The method produces an accurate approximation of pHMM scores and E-values with high speed and small memory requirements. On a protein benchmark, nail recovers the majority of recall difference between MMseqs2 and HMMER, with run time \~{}26x faster than HMMER3 (only \~{}2.4x slower than MMseqs2{\textquoteright}s sensitive variant). nail is released under the open BSD-3-clause license and is available for download at https://github.com/TravisWheelerLab/nail.Competing Interest StatementThe authors have declared no competing interest.},
+	URL = {https://www.biorxiv.org/content/early/2024/01/30/2024.01.27.577580},
+	eprint = {https://www.biorxiv.org/content/early/2024/01/30/2024.01.27.577580.full.pdf},
+	journal = {bioRxiv}
+}
+
+@article{douze2025faiss,
+  author={Douze, Matthijs and Guzhva, Alexandr and Deng, Chengqi and Johnson, Jeff and Szilvasy, Gergely and Mazaré, Pierre-Emmanuel and Lomeli, Maria and Hosseini, Lucas and Jégou, Hervé},
+  journal={IEEE Transactions on Big Data},
+  title={The Faiss Library},
+  year={2026},
+  volume={12},
+  number={2},
+  pages={346--361},
+  keywords={Vectors;Libraries;Databases;Indexing;Measurement;Media;Quantization (signal);Partitioning algorithms;Feature extraction;Big Data;Vector search;data compression;quantization;information retrieval;numerical library},
+  doi={10.1109/TBDATA.2025.3618474}}
+
+
+@misc{mensch2018differentiabledynamicprogrammingstructured,
+      title={Differentiable Dynamic Programming for Structured Prediction and Attention},
+      author={Arthur Mensch and Mathieu Blondel},
+      year={2018},
+      eprint={1802.03676},
+      eprinttype={arXiv},
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/1802.03676},
+}
+
+@misc{urban2017deepconvolutionalnetsreally,
+      title={Do Deep Convolutional Nets Really Need to be Deep and Convolutional?},
+      author={Gregor Urban and Krzysztof J. Geras and Samira Ebrahimi Kahou and Ozlem Aslan and Shengjie Wang and Rich Caruana and Abdelrahman Mohamed and Matthai Philipose and Matt Richardson},
+      year={2017},
+      eprint={1603.05691},
+      eprinttype={arXiv},
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/1603.05691},
+}
+
+@article{10.1145/3065386,
+author = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E.},
+title = {ImageNet classification with deep convolutional neural networks},
+year = {2017},
+issue_date = {June 2017},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {60},
+number = {6},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/3065386},
+doi = {10.1145/3065386},
+abstract = {We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSVRC-2010 contest into the 1000 different classes. On the test data, we achieved top-1 and top-5 error rates of 37.5\% and 17.0\%, respectively, which is considerably better than the previous state-of-the-art. The neural network, which has 60 million parameters and 650,000 neurons, consists of five convolutional layers, some of which are followed by max-pooling layers, and three fully connected layers with a final 1000-way softmax. To make training faster, we used non-saturating neurons and a very efficient GPU implementation of the convolution operation. To reduce overfitting in the fully connected layers we employed a recently developed regularization method called "dropout" that proved to be very effective. We also entered a variant of this model in the ILSVRC-2012 competition and achieved a winning top-5 test error rate of 15.3\%, compared to 26.2\% achieved by the second-best entry.},
+journal = {Commun. ACM},
+month = may,
+pages = {84--90},
+numpages = {7}
+}
+
+@article{oord2019representationlearningcontrastivepredictive,
+  author       = {A{\"{a}}ron van den Oord and
+                  Yazhe Li and
+                  Oriol Vinyals},
+  title        = {Representation Learning with Contrastive Predictive Coding},
+  journal      = {CoRR},
+  volume       = {abs/1807.03748},
+  year         = {2018},
+  url          = {http://arxiv.org/abs/1807.03748},
+  eprinttype   = {arXiv},
+  eprint       = {1807.03748},
+  timestamp    = {Mon, 13 Aug 2018 16:48:25 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1807-03748.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{loshchilov2019decoupledweightdecayregularization,
+      title={Decoupled Weight Decay Regularization},
+      author={Ilya Loshchilov and Frank Hutter},
+      year={2019},
+      eprint={1711.05101},
+      eprinttype={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/1711.05101},
+}
+
+@article{Steinegger079681,
+  title   = {MMseqs2 enables sensitive protein sequence searching for the analysis of massive data sets},
+  author  = {Steinegger, Martin and S{\"o}ding, Johannes},
+  journal = {Nat. Biotechnol.},
+  volume  = {35},
+  number  = {11},
+  pages   = {1026--1028},
+  year    = {2017},
+  doi     = {10.1038/nbt.3988}
+}
+
+@article{Buchfink2023.01.24.525373,
+  title   = {Sensitive clustering of protein sequences at tree-of-life scale using DIAMOND DeepClust},
+  author  = {Buchfink, Benjamin and Ashkenazy, Haim and Reuter, Klaus and Kennedy, John A. and Drost, Hajk-Georg},
+	abstract = {The biosphere genomics era is transforming life science research, but existing methods struggle to efficiently reduce the vast dimensionality of the protein universe. We present DIAMOND DeepClust, an ultra-fast cascaded clustering method optimized to cluster the 19 billion protein sequences currently defining the protein biosphere. As a result, we detect 1.7 billion clusters of which 32\% hold more than one sequence. This means that 544 million clusters represent 94\% of all known proteins, illustrating that clustering across the tree of life can significantly accelerate comparative studies in the Earth BioGenome era.Competing Interest StatementThe authors have declared no competing interest.},
+  journal = {Nat. Methods},
+  volume = {25},
+  year    = {2026},
+  pages   = {724--727},
+  eprint  = {https://doi.org/10.1038/s41592-026-03030-z},
+  doi     = {10.1101/2023.01.24.525373}
+}
+
+@article{10.1109/TPAMI.2010.57,
+author = {Jégou, Hervé and Douze, Matthijs and Schmid, Cordelia},
+title = {Product Quantization for Nearest Neighbor Search},
+year = {2011},
+issue_date = {January 2011},
+publisher = {IEEE Computer Society},
+address = {USA},
+volume = {33},
+number = {1},
+issn = {0162-8828},
+url = {https://doi.org/10.1109/TPAMI.2010.57},
+doi = {10.1109/TPAMI.2010.57},
+abstract = {This paper introduces a product quantization-based approach for approximate nearest neighbor search. The idea is to decompose the space into a Cartesian product of low-dimensional subspaces and to quantize each subspace separately. A vector is represented by a short code composed of its subspace quantization indices. The euclidean distance between two vectors can be efficiently estimated from their codes. An asymmetric version increases precision, as it computes the approximate distance between a vector and a code. Experimental results show that our approach searches for nearest neighbors efficiently, in particular in combination with an inverted file system. Results for SIFT and GIST image descriptors show excellent search accuracy, outperforming three state-of-the-art approaches. The scalability of our approach is validated on a data set of two billion vectors.},
+journal = {IEEE Trans. Pattern Anal. Mach. Intell.},
+month = jan,
+pages = {117--128},
+numpages = {12},
+keywords = {very large databases, image indexing, approximate search., High-dimensional indexing, image indexing, very large databases, approximate search., High-dimensional indexing}
+}
+
+@article{ALTSCHUL1990403,
+title = {Basic local alignment search tool},
+journal = {J. Mol. Biol.},
+volume = {215},
+number = {3},
+pages = {403--410},
+year = {1990},
+issn = {0022-2836},
+doi = {https://doi.org/10.1016/S0022-2836(05)80360-2},
+url = {https://www.sciencedirect.com/science/article/pii/S0022283605803602},
+author = {Stephen F. Altschul and Warren Gish and Webb Miller and Eugene W. Myers and David J. Lipman},
+abstract = {A new approach to rapid sequence comparison, basic local alignment search tool (BLAST), directly approximates alignments that optimize a measure of local similarity, the maximal segment pair (MSP) score. Recent mathematical results on the stochastic properties of MSP scores allow an analysis of the performance of this method as well as the statistical significance of alignments it generates. The basic algorithm is simple and robust; it can be implemented in a number of ways and applied in a variety of contexts including straight-forward DNA and protein sequence database searches, motif searches, gene identification searches, and in the analysis of multiple regions of similarity in long DNA sequences. In addition to its flexibility and tractability to mathematical analysis, BLAST is an order of magnitude faster than existing sequence comparison tools of comparable sensitivity.}
+}
+
+@article {Kallenborn2024.11.13.623350,
+	author = {Kallenborn, Felix and Chacon, Alejandro and Hundt, Christian and Sirelkhatim, Hassan and Didi, Kieran and Dallago, Christian and Mirdita, Milot and Schmidt, Bertil and Steinegger, Martin},
+	title = {GPU-accelerated homology search with MMseqs2},
+	elocation-id = {2024.11.13.623350},
+	year = {2025},
+	doi = {10.1101/2024.11.13.623350},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {Sensitive search of rapidly growing protein sequence databases for evolutionary information requires continual acceleration. This is achieved by innovating algorithms to filter sequences, or perform gapped alignments. Here, we present GPU-optimized algorithms for gapless filtering, achieving up to 100 TCUPS across eight GPUs, and gapped alignment using protein profiles. Implemented in MMseqs2-GPU, they result in 20{\texttimes} faster and 71{\texttimes} cheaper search on a NVIDIA L40S GPU compared to MMseqs2 k-mer on a 128-core CPU. In ColabFold, they accelerate structure prediction 23{\texttimes} at matching accuracy to AlphaFold2. MMseqs2-GPU is open-source software available for CUDA devices at mmseqs.com.Competing Interest StatementThe authors declare the following financial interests/personal relationships which may be considered as potential compet- ing interests: C.D., A.C., C.H., H.S., K.D. are employed by NVIDIA. M.S. declares an outside interest in Stylus Medicine.},
+	URL = {https://www.biorxiv.org/content/early/2024/11/15/2024.11.13.623350},
+	eprint = {https://www.biorxiv.org/content/early/2024/11/15/2024.11.13.623350.full.pdf},
+	journal = {Nat Methods},
+  pages = {2024--2027},
+  volume = {20}
+}
+
+@article {Schmidt2023.10.09.561526,
+	author = {Schmidt, Bertil and Kallenborn, Felix and Chacon, Alejandro and Hundt, Christian},
+	title = {CUDASW++4.0: Ultra-fast GPU-based Smith-Waterman Protein Sequence Database Search},
+	elocation-id = {2023.10.09.561526},
+	year = {2024},
+	doi = {10.1101/2023.10.09.561526},
+  journal = {BMC Bioinformatics},
+  pages = {342},
+  volume = {25},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {Background: The maximal sensitivity for local pairwise alignment makes the Smith-Waterman algorithm a popular choice forprotein sequence database search. However, its quadratic time complexity makes it compute-intensive. Unfortunately, current state-of-the-art software tools are not able to leverage the massively parallel processing capabilities of modern GPUs with close-to-peak performance. This motivates the need for more efficient implementations. Results: CUDASW++4.0 is a fast software tool for scanning protein sequence databases with the Smith-Waterman algorithm on CUDA-enabled GPUs. Our approach achieves high efficiency for dynamic programming-based alignment computation by minimizing memory accesses and instructions. We provide both efficient matrixtiling and sequence database partitioning schemes, and exploit next generation floating point arithmetic and novel DPX instructions. This leads to close-to-peak performance on modern GPU generations (Ampere, Ada, Hopper) with throughput rates of up to 1.94 TCUPS, 5.01 TCUPS, 5.71 TCUPS on an A100, L40S, and H100, respectively. Evaluation on the Swiss-Prot, UniRef50, and TrEMBL databases shows that CUDASW++4.0 gains over an order-of-magnitude performance improvements over previous GPU-based approaches (CUDASW++3.0, ADEPT). In addition, our algorithm demonstrates significant speedups over top-performing CPU-based tools (BLASTP, SWIPE, SWIMM2.0), can exploit multi-GPU nodes with linear scaling, and features an impressive energy efficiency of up to 15.7 GCUPS/Watt. Conclusion: CUDASW++4.0 changes the standing of GPUs in protein sequence database search with Smith-Waterman alignment by providing close-to-peak performance on modern GPUs. It is freely available at https://github.com/abschmidt/CUDASW4.Competing Interest StatementThe authors have declared no competing interest.},
+	URL = {https://www.biorxiv.org/content/early/2023/10/11/2023.10.09.561526},
+	eprint = {https://www.biorxiv.org/content/early/2023/10/11/2023.10.09.561526.full.pdf}
+}
+
+@article{10.1093/bioinformatics/btaf198,
+    author = {Olson, Daniel and Colligan, Thomas and Demekas, Daphne and Roddy, Jack W and Youens-Clark, Ken and Wheeler, Travis J},
+    title = {NEAR: neural embeddings for amino acid relationships},
+    journal = {Bioinformatics},
+    volume = {41},
+    number = {Supplement\_1},
+    pages = {i449--i457},
+    year = {2025},
+    month = {07},
+    abstract = {Protein language models (PLMs) have recently demonstrated potential to supplant classical protein database search methods based on sequence alignment, but are slower than common alignment-based tools and appear to be prone to a high rate of false labeling. Here, we present Neural Embeddings for Amino acid Relationships (NEAR), a method based on neural representation learning that is designed to improve both speed and accuracy of search for likely homologs in a large protein sequence database. NEAR's ResNet embedding model is trained using contrastive learning guided by trusted sequence alignments. It computes per-residue embeddings for target and query protein sequences, and identifies alignment candidates with a pipeline consisting of residue-level k-NN search and a simple neighbor aggregation scheme. Tests on a benchmark consisting of trusted remote homologs and randomly shuffled decoy sequences reveal that NEAR substantially improves accuracy relative to state-of-the-art PLMs, with lower memory requirements and faster embedding and search speed. While these results suggest that the NEAR model may be useful for standalone homology detection with increased sensitivity over standard alignment-based methods, in this manuscript, we focus on a more straightforward analysis of the model's value as a high-speed pre-filter for sensitive annotation. In that context, NEAR is at least 5x faster than the pre-filter currently used in the widely used profile hidden Markov model (pHMM) search tool HMMER3, and also outperforms the pre-filter used in our fast pHMM tool, nail.NEAR is under an open-source license. Code and data curation instructions can be found at https://github.com/TravisWheelerLab/NEAR.},
+    issn = {1367-4811},
+    doi = {10.1093/bioinformatics/btaf198},
+    url = {https://doi.org/10.1093/bioinformatics/btaf198},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/41/Supplement_1/i449/63745255/btaf198.pdf},
+}
+
+@article{
+doi:10.1126/science.ade2574,
+author = {Zeming Lin  and Halil Akin  and Roshan Rao  and Brian Hie  and Zhongkai Zhu  and Wenting Lu  and Nikita Smetanin  and Robert Verkuil  and Ori Kabeli  and Yaniv Shmueli  and Allan dos Santos Costa  and Maryam Fazel-Zarandi  and Tom Sercu  and Salvatore Candido  and Alexander Rives },
+title = {Evolutionary-scale prediction of atomic-level protein structure with a language model},
+journal = {Science},
+volume = {379},
+number = {6637},
+pages = {1123--1130},
+year = {2023},
+doi = {10.1126/science.ade2574},
+URL = {https://www.science.org/doi/abs/10.1126/science.ade2574},
+eprint = {https://www.science.org/doi/pdf/10.1126/science.ade2574},
+abstract = {Recent advances in machine learning have leveraged evolutionary information in multiple sequence alignments to predict protein structure. We demonstrate direct inference of full atomic-level protein structure from primary sequence using a large language model. As language models of protein sequences are scaled up to 15 billion parameters, an atomic-resolution picture of protein structure emerges in the learned representations. This results in an order-of-magnitude acceleration of high-resolution structure prediction, which enables large-scale structural characterization of metagenomic proteins. We apply this capability to construct the ESM Metagenomic Atlas by predicting structures for \&gt;617 million metagenomic protein sequences, including \&gt;225 million that are predicted with high confidence, which gives a view into the vast breadth and diversity of natural proteins. Machine learning methods for protein structure prediction have taken advantage of the evolutionary information present in multiple sequence alignments to derive accurate structural information, but predicting structure accurately from a single sequence is much more difficult. Lin et al. trained transformer protein language models with up to 15 billion parameters on experimental and high-quality predicted structures and found that information about atomic-level structure emerged in the model as it was scaled up. They created ESMFold, a sequence-to-structure predictor that is nearly as accurate as alignment-based methods and considerably faster. The increased speed permitted the generation of a database, the ESM Metagenomic Atlas, containing more than 600 million metagenomic proteins. —MAF A protein language model enables structure prediction and analysis of more than 600 million metagenomic proteins.}}
+
+@article{10.1093/nar/gkaa913,
+    author = {Mistry, Jaina and Chuguransky, Sara and Williams, Lowri and Qureshi, Matloob and Salazar, Gustavo A and Sonnhammer, Erik L L and Tosatto, Silvio C E and Paladin, Lisanna and Raj, Shriya and Richardson, Lorna J and Finn, Robert D and Bateman, Alex},
+    title = {Pfam: The protein families database in 2021},
+    journal = {Nucleic Acids Res.},
+    volume = {49},
+    number = {D1},
+    pages = {D412--D419},
+    year = {2021},
+    month = {01},
+    abstract = {The Pfam database is a widely used resource for classifying protein sequences into families and domains. Since Pfam was last described in this journal, over 350 new families have been added in Pfam 33.1 and numerous improvements have been made to existing entries. To facilitate research on COVID-19, we have revised the Pfam entries that cover the SARS-CoV-2 proteome, and built new entries for regions that were not covered by Pfam. We have reintroduced Pfam-B which provides an automatically generated supplement to Pfam and contains 136 730 novel clusters of sequences that are not yet matched by a Pfam family. The new Pfam-B is based on a clustering by the MMseqs2 software. We have compared all of the regions in the RepeatsDB to those in Pfam and have started to use the results to build and refine Pfam repeat families. Pfam is freely available for browsing and download at http://pfam.xfam.org/.},
+    issn = {0305-1048},
+    doi = {10.1093/nar/gkaa913},
+    url = {https://doi.org/10.1093/nar/gkaa913},
+    eprint = {https://academic.oup.com/nar/article-pdf/49/D1/D412/35363969/gkaa913.pdf},
+}
+
+@article{pfasum,
+    author = {Keul, F. and Hess, M. and Goesele, M. et al},
+    title = {PFASUM: a substitution matrix from Pfam structural alignments},
+    journal = {BMC Bioinformatics},
+    volume = {18},
+    number = {293},
+    year = {2017},
+    pages = {293--293},
+    eprint = {https://doi.org/10.1186/s12859-017-1703-z},
+}
+
+@article{10.1093/nar/gkr367,
+    author = {Finn, Robert D. and Clements, Jody and Eddy, Sean R.},
+    title = {HMMER web server: interactive sequence similarity searching},
+    journal = {Nucleic Acids Res.},
+    volume = {39},
+    number = {suppl\_2},
+    pages = {W29--W37},
+    year = {2011},
+    month = {07},
+    abstract = { HMMER is a software suite for protein sequence similarity searches using probabilistic methods. Previously, HMMER has mainly been available only as a computationally intensive UNIX command-line tool, restricting its use. Recent advances in the software, HMMER3, have resulted in a 100-fold speed gain relative to previous versions. It is now feasible to make efficient profile hidden Markov model (profile HMM) searches via the web. A HMMER web server ( http://hmmer.janelia.org ) has been designed and implemented such that most protein database searches return within a few seconds. Methods are available for searching either a single protein sequence, multiple protein sequence alignment or profile HMM against a target sequence database, and for searching a protein sequence against Pfam. The web server is designed to cater to a range of different user expertise and accepts batch uploading of multiple queries at once. All search methods are also available as RESTful web services, thereby allowing them to be readily integrated as remotely executed tasks in locally scripted workflows. We have focused on minimizing search times and the ability to rapidly display tabular results, regardless of the number of matches found, developing graphical summaries of the search results to provide quick, intuitive appraisement of them. },
+    issn = {0305-1048},
+    doi = {10.1093/nar/gkr367},
+    url = {https://doi.org/10.1093/nar/gkr367},
+    eprint = {https://academic.oup.com/nar/article-pdf/39/suppl\_2/W29/7628106/gkr367.pdf},
+}
+
+@article{Jumper2021,title = {Highly accurate protein structure prediction with AlphaFold},volume = {596},ISSN = {1476-4687},url = {http://dx.doi.org/10.1038/s41586-021-03819-2},DOI = {10.1038/s41586-021-03819-2},number = {7873},journal = {Nature},publisher = {Springer Science and Business Media LLC},author = {Jumper, John and Evans, Richard and Pritzel, Alexander and Green, Tim and Figurnov, Michael and Ronneberger, Olaf and Tunyasuvunakool, Kathryn and Bates, Russ and Žídek, Augustin and Potapenko, Anna and Bridgland, Alex and Meyer, Clemens and Kohl, Simon A. A. and Ballard, Andrew J. and Cowie, Andrew and Romera-Paredes, Bernardino and Nikolov, Stanislav and Jain, Rishub and Adler, Jonas and Back, Trevor and Petersen, Stig and Reiman, David and Clancy, Ellen and Zielinski, Michal and Steinegger, Martin and Pacholska, Michalina and Berghammer, Tamas and Bodenstein, Sebastian and Silver, David and Vinyals, Oriol and Senior, Andrew W. and Kavukcuoglu, Koray and Kohli, Pushmeet and Hassabis, Demis},year = {2021},month = jul,pages = {583--589}}
+
+@inbook{10.5555/3454287.3455008,
+author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and K\"{o}pf, Andreas and Yang, Edward and DeVito, Zach and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+title = {PyTorch: an imperative style, high-performance deep learning library},
+year = {2019},
+publisher = {Curran Associates Inc.},
+address = {Red Hook, NY, USA},
+abstract = {Deep learning frameworks have often focused on either usability or speed, but not both. PyTorch is a machine learning library that shows that these two goals are in fact compatible: it provides an imperative and Pythonic programming style that supports code as a model, makes debugging easy and is consistent with other popular scientific computing libraries, while remaining efficient and supporting hardware accelerators such as GPUs.In this paper, we detail the principles that drove the implementation of PyTorch and how they are reflected in its architecture. We emphasize that every aspect of PyTorch is a regular Python program under the full control of its user. We also explain how the careful and pragmatic implementation of the key components of its runtime enables them to work together to achieve compelling performance. We demonstrate the efficiency of individual subsystems, as well as the overall speed of PyTorch on several common benchmarks.},
+booktitle = {Adv. Neural Inf. Process. Syst. (NeurIPS)},
+articleno = {721},
+numpages = {12}
+}
+
+@misc{gttl,
+  title={GenomeTools Template Library,
+  \url{https://github.com/stefan-kurtz/gttl}},
+  author={Kurtz, Stefan},
+  year={2021},
+  organization={University of Hamburg}
+}
+
+@book{jolliffe2002pca,
+  title     = {Principal Component Analysis},
+  author    = {Jolliffe, Ian T.},
+  year      = {2002},
+  edition   = {2nd},
+  publisher = {Springer}
+}
+
+@article{NEEDLEMAN1970443,
+title = {A general method applicable to the search for similarities in the amino acid sequence of two proteins},
+journal = {J. Mol. Biol.},
+volume = {48},
+number = {3},
+pages = {443--453},
+year = {1970},
+issn = {0022-2836},
+doi = {https://doi.org/10.1016/0022-2836(70)90057-4},
+url = {https://www.sciencedirect.com/science/article/pii/0022283670900574},
+author = {Saul B. Needleman and Christian D. Wunsch},
+abstract = {A computer adaptable method for finding similarities in the amino acid sequences of two proteins has been developed. From these findings it is possible to determine whether significant homology exists between the proteins. This information is used to trace their possible evolutionary development. The maximum match is a number dependent upon the similarity of the sequences. One of its definitions is the largest number of amino acids of one protein that can be matched with those of a second protein allowing for all possible interruptions in either of the sequences. While the interruptions give rise to a very large number of comparisons, the method efficiently excludes from consideration those comparisons that cannot contribute to the maximum match. Comparisons are made from the smallest unit of significance, a pair of amino acids, one from each protein. All possible pairs are represented by a two-dimensional array, and all possible comparisons are represented by pathways through the array. For this maximum match only certain of the possible pathways must be evaluated. A numerical value, one in this case, is assigned to every cell in the array representing like amino acids. The maximum match is the largest number that would result from summing the cell values of every pathway.}
+}
+
+@article{SMITH1981195,
+title = {Identification of common molecular subsequences},
+journal = {J. Mol. Biol.},
+volume = {147},
+number = {1},
+pages = {195--197},
+year = {1981},
+issn = {0022-2836},
+doi = {https://doi.org/10.1016/0022-2836(81)90087-5},
+url = {https://www.sciencedirect.com/science/article/pii/0022283681900875},
+author = {T.F. Smith and M.S. Waterman}
+}
+
+@article{andreeva2021scope,
+  title={SCOPe: improvements to the structural classification of proteins},
+  author={Andreeva, Antonina and Ailey, B and Brenner, SE and Hubbard, TJP and Murzin, AG and Chothia, C},
+  journal={Nucleic Acids Res.},
+  volume={50},
+  number={D1},
+  pages={D553--D561},
+  year={2021},
+  publisher={Oxford University Press}
+}
+
+@article{10.1093/nar/gku947,
+    author = {Sillitoe, Ian and Lewis, Tony E. and Cuff, Alison and Das, Sayoni and Ashford, Paul and Dawson, Natalie L. and Furnham, Nicholas and Laskowski, Roman A. and Lee, David and Lees, Jonathan G. and Lehtinen, Sonja and Studer, Romain A. and Thornton, Janet and Orengo, Christine A.},
+    title = {CATH: comprehensive structural and functional annotations for genome sequences},
+    journal = {Nucleic Acids Res.},
+    volume = {43},
+    number = {D1},
+    pages = {D376--D381},
+    year = {2015},
+    month = {01},
+    abstract = {The latest version of the CATH-Gene3D protein structure classification database (4.0, http://www.cathdb.info) provides annotations for over 235 000 protein domain structures and includes 25 million domain predictions. This article provides an update on the major developments in the 2 years since the last publication in this journal including: significant improvements to the predictive power of our functional families (FunFams); the release of our ‘current’ putative domain assignments (CATH-B); a new, strictly non-redundant data set of CATH domains suitable for homology benchmarking experiments (CATH-40) and a number of improvements to the web pages.},
+    issn = {0305-1048},
+    doi = {10.1093/nar/gku947},
+    url = {https://doi.org/10.1093/nar/gku947},
+    eprint = {https://academic.oup.com/nar/article-pdf/43/D1/D376/7330586/gku947.pdf},
+}
+
+@article{10.1093/protein/12.2.85,
+    author = {Rost, Burkhard},
+    title = {Twilight zone of protein sequence alignments},
+    journal = {Protein Eng.},
+    volume = {12},
+    number = {2},
+    pages = {85--94},
+    year = {1999},
+    month = {02},
+    abstract = {Sequence alignments unambiguously distinguish between protein pairs of similar and non-similar structure when the pairwise sequence identity is high (\&gt;40\% for long alignments). The signal gets blurred in the twilight zone of 20–35\% sequence identity. Here, more than a million sequence alignments were analysed between protein pairs of known structures to re-define a line distinguishing between true and false positives for low levels of similarity. Four results stood out. (i) The transition from the safe zone of sequence alignment into the twilight zone is described by an explosion of false negatives. More than 95\% of all pairs detected in the twilight zone had different structures. More precisely, above a cut-off roughly corresponding to 30\% sequence identity, 90\% of the pairs were homologous; below 25\% less than 10\% were. (ii) Whether or not sequence homology implied structural identity depended crucially on the alignment length. For example, if 10 residues were similar in an alignment of length 16 (\&gt;60\%), structural similarity could not be inferred. (iii) The `more similar than identical' rule (discarding all pairs for which percentage similarity was lower than percentage identity) reduced false positives significantly. (iv) Using intermediate sequences for finding links between more distant families was almost as successful: pairs were predicted to be homologous when the respective sequence families had proteins in common. All findings are applicable to automatic database searches.},
+    issn = {0269-2139},
+    doi = {10.1093/protein/12.2.85},
+    url = {https://doi.org/10.1093/protein/12.2.85},
+    eprint = {https://academic.oup.com/peds/article-pdf/12/2/85/18542824/120085.pdf},
+}

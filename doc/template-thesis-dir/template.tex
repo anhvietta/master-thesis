@@ -1,0 +1,181 @@
+%% Example file for a masterthesis
+% Copyright 2010 by Dirk Willrodt <dwillrodt@zbh.uni-hamburg.de>
+% --------------------------------------------------------------
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.2
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
+%
+% Usage: just compile it with pdflatex, and see how it looks, and what caused
+% this. You can also take it and change blocks marked like this:
+%%%%>
+% ...
+%%%%<
+% to produce Your own thesis.
+%
+% check chapters in sub folders for examples of usage of different mark-ups
+
+
+% use the option ger for thesis in german.
+% use the option bsc for a bachelor thesis.
+% you can pass options to scrreprt, for example numbers=noenddot for if you have
+% an appendix and you don't want '.' at the end of chapter numbers
+%\documentclass[twoside,a4paper,ger,bsc]{master}
+\documentclass[twoside,a4paper,bsc]{master}
+%%%%>
+% the following package is only needed to produce dummy text.
+% You do not need it for your thesis.
+\usepackage{lipsum}
+% This package is not included in the class, because it is not needed, but we
+% recommend to use it. It only works with pdfLaTeX.
+\usepackage[kerning,spacing]{microtype}
+
+% add other packages, as needed.
+
+%%%%<
+
+% Helpfull command to put reminders in your work
+\newcommand{\Todo}[1]%
+{\colorbox{orange}{\mbox{}\\\fbox{\parbox{\textwidth}{\textbf{Todo: #1}}}}\\}
+% it uses one argument which is referred to by #1
+
+\newcommand{\Alphabet}{\mathcal{A}\xspace}
+\begin{document}
+
+% use roman page numbers before the real document starts.
+\pagenumbering{roman}
+
+%Change the values here to get your title page and assertion page right
+\AdvisorA{Albert Einstein}
+\AdvisorB{Marie Curie}
+\author{Max Mustermann}
+\MatrikelNo{0066600}
+%\AuthorAdress{Musterstrasse 1}{07770 M\"unchhausen}
+\title{
+       \begin{tabular}{c}
+       \textbf{Die computergest{\"u}tzte Analyse biologischer Daten}\\[3mm]
+       \textbf{mit modernsten Methoden der Informatik}
+       \end{tabular}}
+% add data line or leave it to use current date.
+%\date{1.4.2016}
+\Maketitle
+
+% if you write in German, maybe change this to "Zusammenfassung".
+\addchap*{Abstract}
+\small
+%%%%>
+\lipsum[1] % adds sampletext, remove and write your abstract!
+
+This reference is only here to fill the bibliography: \cite{articleex}.
+%%%%<
+\normalsize
+
+% The first sets the depth of the TOC, the second produces it. Change the
+% number if you need a ``deeper'' TOC.
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%%%%>
+% include chapters from subfolders
+% change if you need more chapters or if you want to call them different, this
+% is just an example
+
+\Chapter{Introduction}
+
+% reset to arabic page numbers will start with 1
+\pagenumbering{arabic}
+
+This Chapter shows the different headings used in
+\LaTeX{} and what they look like in this class.
+
+Abs"atze werden durch Leerzeilen voneinander getrennt.
+
+\lipsum[2]
+
+\section{2nd Level Heading}
+\lipsum[3]
+
+\begin{Definition}[Fibonaccizahlen]
+Die Fibonaccizahlen besteht aus der Folge \(f_{0},f_{1},f_{2},\ldots\) mit
+\(f_{0}=0\), \(f_{1}=1\) und \(f_{i}=f_{i-2}+f_{i-1}\) f"ur alle \(i\geq 2\).
+\end{Definition}
+
+\lipsum[4]
+
+\begin{Definition}
+Eine Sequenz ist eine Folge von Symbolen "uber dem Alphabet \(\Alphabet\).
+\end{Definition}
+
+\lipsum[5]
+
+\Chapter{Methods}
+
+\lipsum[6]
+
+\begin{Theorem}
+Die quadratische Gleichung \(mx^{2}+nx+\ell=0\) hat die L"osungen
+\(x=\frac{-m\pm\sqrt{m^{2}-4n\ell}}{2n}\).
+\end{Theorem}
+
+\lipsum[7]
+
+\begin{Beispiel}
+Wir betrachten die quadratische Gleichung mit \(m=-1\), \(n=16\) und \(\ell=4\).
+Dann gibt es folgende L"osungen
+\end{Beispiel}
+
+\lipsum[8]
+
+\begin{Lemma}[Parikh]
+Eine Aussage "uber formale Sprachen.
+\end{Lemma}
+
+\lipsum[9]
+
+\begin{Satz}[Meier und Stockmeier]
+Ein anderer Satz "uber formale Sprachen.
+\end{Satz}
+
+\Chapter{Results}
+
+\lipsum[10]
+
+\Chapter{Conclusion}
+
+\lipsum[11]
+
+%%%%<
+
+%bibliography
+\newpage
+\small
+% change the name of the bib-file to get your own bibliography
+\bibliographystyle{unsrt}
+\bibliography{template}
+\normalsize
+
+%%%%>
+% appendix
+
+\appendix
+\noappendicestocpagenum
+\addappheadtotoc
+
+\Chapter{Some additional method descriptions}
+
+Put Tables of data here, things one doesn't need to read to understand Your
+work, but things one needs to reproduce it!
+
+\Chapter{Some Additional Data}
+
+\lipsum[9]
+%%%%<
+
+\Assertion
+\end{document}

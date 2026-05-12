@@ -1,0 +1,15 @@
+template.pdf
+template.aux
+template.bbl
+template.blg
+template.fdb_latexmk
+template.fls
+template.log
+template.out
+template.pdf
+template.thm
+template.toc
+template.bcf
+*.png
+*.pdf
+.vscode

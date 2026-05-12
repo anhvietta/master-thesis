@@ -1,0 +1,840 @@
+%% Example file for a masterthesis
+% Copyright 2010 by Dirk Willrodt <dwillrodt@zbh.uni-hamburg.de>
+% --------------------------------------------------------------
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.2
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
+%
+% Usage: just compile it with pdflatex, and see how it looks, and what caused
+% this. You can also take it and change blocks marked like this:
+%%%%>
+% ...
+%%%%<
+% to produce Your own thesis.
+%
+% check chapters in sub folders for examples of usage of different mark-ups
+
+
+% use the option ger for thesis in german.
+% use the option bsc for a bachelor thesis.
+% you can pass options to scrreprt, for example numbers=noenddot for if you have
+% an appendix and you don't want '.' at the end of chapter numbers
+%\documentclass[twoside,a4paper,ger,bsc]{master}
+\documentclass[twoside,a4paper]{master}
+%%%%>
+% the following package is only needed to produce dummy text.
+% You do not need it for your thesis.
+\usepackage{lipsum}
+% This package is not included in the class, because it is not needed, but we
+% recommend to use it. It only works with pdfLaTeX.
+\usepackage[kerning,spacing]{microtype}
+
+% add other packages, as needed.
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{palatino}
+\usepackage{numprint}
+\usepackage{svg}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{times}
+\usepackage{theorem}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{pdflscape}
+
+%\begin{comment}
+\usepackage[style=numeric, sorting=none]{biblatex}
+\addbibresource{template.bib}
+
+\begin{comment}
+\AtEveryBibitem{%
+  \clearfield{doi}%
+  \clearfield{url}%
+  \clearfield{issn}%
+  \clearfield{isbn}%
+  \clearfield{eprint}%
+  \clearfield{editor}%
+  \clearfield{address}%
+  \clearfield{abstract}%
+  \clearfield{series}%
+  \clearfield{numpages}%
+  \clearfield{keywords}%
+}
+\end{comment}
+
+\renewbibmacro{in:}{}
+\DeclareFieldFormat{pages}{#1}
+\DeclareFieldFormat{title}{"#1"}
+\DeclareFieldFormat{edition}{#1 edition}
+\DeclareFieldFormat{archivePrefix}{#1}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=archivePrefix, fieldtarget=eprinttype]
+    }
+  }
+}
+
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printfield{journaltitle}%
+  \setunit{\addspace}%
+  \printfield{volume}%
+  \setunit{\addcomma\space}%
+  \printfield{pages}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+\DeclareBibliographyDriver{misc}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \usebibmacro{eprint}%
+  \setunit{\addcomma\space}%
+  \printfield{pages}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printfield{booktitle}%
+  \setunit{\addcomma\space}%
+  \printfield{pages}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+\DeclareBibliographyDriver{inbook}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printfield{booktitle}%
+  \setunit{\addcomma\space}%
+  \printfield{articleno}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+\DeclareBibliographyDriver{book}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printfield{edition}%
+  \setunit{\addcomma\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+\DeclareBibliographyDriver{techreport}{%
+  \printnames{author}%
+  \setunit{\addcomma\space}%
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{institution}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+%\end{comment}
+
+
+%%%%<
+
+% Helpfull command to put reminders in your work
+\newcommand{\Todo}[1]%
+{\colorbox{orange}{\mbox{}\\\fbox{\parbox{\textwidth}{\textbf{Todo: #1}}}}\\}
+% it uses one argument which is referred to by #1
+
+\newcommand{\Alphabet}{\mathcal{A}\xspace}
+\begin{document}
+
+% use roman page numbers before the real document starts.
+\pagenumbering{roman}
+
+%Change the values here to get your title page and assertion page right
+\AdvisorA{Prof. Andrew Torda}
+\AdvisorB{Prof. Stefan Kurtz}
+\author{Anh Viet Ta}
+\MatrikelNo{6747004}
+%\AuthorAdress{Musterstrasse 1}{07770 M\"unchhausen}
+\title{
+       \begin{tabular}{c}
+       \textbf{Construction of embedding space of amino acid environment}\\[3mm]
+       \textbf{for massive sensitive homology search}
+       \end{tabular}}
+% add data line or leave it to use current date.
+%\date{1.4.2016}
+\Maketitle
+
+% if you write in German, maybe change this to "Zusammenfassung".
+\addchap*{Abstract}
+\small
+%%%%>
+With high-throughput sequencing technologies, the cost of genome sequencing has come down significantly. This shift has created demand for optimized, scalable methods for homology detection. Traditional methods, however, require quasi-exhaustive comparison of every sequence pair. Methods representing amino acids as vectors were proposed to improve scalability, but the curse of dimensionality persisted. Recently, approximate vector search and successful deep learning frameworks for text retrieval may offer a new approach for homology search. In this paper, a framework for constructing an embedding space for amino acid environments for such tasks was explored and developed along with a framework for utilizing this embedding space to accelerate protein sequence search. The workflow was then benchmarked on sequence datasets with varying levels of sequence similarity and compared with standard tools. Results show the workflow outperforms standard search tools inn precision and recall. It may serve as a versatile tool for both conservative (high-precision) and exploratory (high-recall) homology searches.
+%%%%<
+\normalsize
+
+% The first sets the depth of the TOC, the second produces it. Change the
+% number if you need a ``deeper'' TOC.
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%%%%>
+% include chapters from subfolders
+% change if you need more chapters or if you want to call them different, this
+% is just an example
+
+\Chapter{Introduction}
+
+% reset to arabic page numbers will start with 1
+\pagenumbering{arabic}
+
+The rise of high-throughput sequencing technologies has led to a rapid growth of biological sequence databases. For example, the protein database UniProt~\cite{10.1093/nar/gky092} has doubled in size every two years. As a result, the development of efficient and accurate methods for protein homology search has become an important focus for tasks such as functional annotation, evolutionary analysis, and drug discovery.
+
+Traditional homology search tools, such as BLAST~\cite{ALTSCHUL1990403} and its derivatives, rely on sequence alignment techniques that involve extensive pairwise comparisons. While these methods are highly effective, the exponential growth of modern sequence databases presents a significant challenge for large-scale applications~\cite{10.1093/bioinformatics/btad225}.
+
+To improve scalability, several approaches have been suggested to represent protein sequences as vectors in high-dimensional embedding spaces~\cite{rives2021biological}. However, the embeddings produced by these methods are often too large for practical vector search application and suffer from the curse of dimensionality~\cite{nearestneighbormeaning}. At the same time, advances in deep learning for natural language processing, along with the development of approximate nearest neighbor search algorithms, have demonstrated the potential for efficient retrieval in large embedding spaces.
+
+This paper proposes a framework for constructing embedding representations of amino acid sequence context. It also presents a workflow to accelerate protein homology search using approximate vector search techniques. The workflow was benchmarked on datasets with varying levels of sequence similarity and compared against established tools. Results show that the method is versatile in terms of precision and recall and can conduct both conservative and exploratory searches with proper parametrization.
+
+\Chapter{State-of-the-art techniques}
+\section{Latent space construction and vector search techniques}
+Vectors are a simple and efficient way to represent data in many computational tasks. This has led to significant interest in efficient methods for storing, indexing, and querying vector data. The problem of vector querying, or \(k\)-nearest neighbor search (\(k\)-NNS), can be formulated as:
+
+Given a set of target vectors \(T \subset R^d\) and a query vector \(q\), find the top-\(k\) point(s) in \(T\) that minimizes a distance metric, for example, the Euclidean distance:
+\begin{align}
+    T(q) = \text{k-argmin}_{t \in T} \{||q-t||_2^2\}
+\end{align}
+In 1975, Bentley et al. introduced the \(k\)-d tree~\cite{10.1145/361002.361007}, an analog to the binary search tree for \(d\)-dimensional vectors. Using the \(k\)-d tree, the search space is partitioned by axis-aligned hyperplanes, with each node splitting the dataset along one dimension at a time. The data structure allows for exact logarithmic-time nearest-neighbor retrieval on average, with strong theoretical grounding in computational geometry. The \(k\)-d tree was the first scalable, general-purpose structure for exact nearest neighbor search and made nearest-neighbor queries practical for early computer vision and graphics tasks. It also paved the way for many other tree-based vector query methods, for example, ball trees~\cite{Omohundro2009FiveBC} and vantage-point trees~\cite{10.5555/313559.313789}.
+
+The above methods are fundamentally grounded in spatial partitioning and geometric structure, leading to many applications in lower-dimensional settings, for example, in 2D/3D graphics or in motion planning and collision detection in robotics. However, during the 1990s, exact nearest neighbor search was shown to be computationally infeasible in high dimensions for large datasets due to the curse of dimensionality. In spatial partitioning methods like \(k\)-d trees, increasing the dimensionality by one requires doubling the dataset to maintain the same search efficacy, leading to an exponentially increasing data demand. Also, with an increasing number of dimensions, distances between points become increasingly similar~\cite{nearestneighbormeaning}. This led to a compromise: instead of finding exact nearest neighbors, the task becomes whether it is possible to find neighbors with a high likelihood of being nearest~\cite{indyk1998approximate}. New approaches to address the new problem emerged either as a new method (Locality-Sensitive Hashing (LSH) in 1998~\cite{indyk1998approximate}) or an improvement to existing methods (Randomized \(k\)-d trees in 2003~\cite{4587638}). LSH abandoned tree-based spatial split, and instead employed hashing functions to encode geometrically similar vectors to similar hashes with high probability. The method is mathematically proven to have sublinear query time in high dimensions, but in practice has a high memory footprint and is sensitive to parameter tuning. On the other hand, randomized \(k\)-d trees remedied the curse of dimensionality by limiting the number of split dimensions to a subset with the highest variance obtained through principal component analysis (PCA)~\cite{jolliffe2002pca}. This method also created an ensemble of trees with different split dimensions as a form of ensemble learning, leading to higher search accuracy.
+
+In the 2010s, new methods continued to emerge, commonly by employing multiple layers/hierarchies to improve search accuracy. An example is the Hierarchical Navigable Small World (HNSW)~\cite{10.1109/TPAMI.2018.2889473}, which organizes data points into a multi-layer structure of proximity graphs. Queries are processed by traversing from higher, sparsely connected layers to lower, densely connected layers, progressively refining candidate neighbors. Recent research also aims to reduce the memory footprint, which is a key barrier to the adoption of vector search. An example is product quantization (PQ)~\cite{10.1109/TPAMI.2010.57}, which splits high-dimensional vectors into subvectors and quantizes each subspace separately, dramatically reducing storage and computation while preserving similarity relationships. Existing algorithms were also optimized and packaged into libraries, an example of which is FAISS (Facebook AI Similarity Search), an open-source library for efficient approximate nearest neighbor search and clustering in high-dimensional embedding spaces, making it one of the most widely adopted tools for large-scale vector search in machine learning and information retrieval applications~\cite{douze2025faiss}. FAISS provides a suite of algorithms (LSH, HNSW, PQ, etc.) that balance accuracy, memory efficiency, and query speed, supporting exact search as well as a variety of approximate methods tailored to different dataset sizes and hardware.
+
+The newly developed techniques for approximate vector search, in turn, drove the emergence of new methods for embedding data in vectors. ColBERT (Contextualized Late Interaction over BERT)~\cite{khattab2020colbertefficienteffectivepassage} introduced a new standard in embedding space construction for information retrieval. Instead of reducing entire queries and documents to single dense vectors, ColBERT produces token-level contextual embeddings using a transformer-based encoder. A late interaction mechanism then computes the relevance between a pair of documents using a MaxSim operator, which identifies the maximum similarity of each query token embedding against all document token embeddings, summing these maxima to produce an overall score (see Figure~\ref{fig:colbert}). Compared to other embedding space construction frameworks, this design decouples encoding and interaction, allowing document embeddings to be precomputed offline, dramatically reducing query-time cost while maintaining fine-grained semantic matching that surpasses traditional single-vector dense retrieval models.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{figures/ColBERT-Framework-MaxSim.pdf}
+\end{center}
+\caption{The general architecture of ColBERT given a query and a target document~\cite{khattab2020colbertefficienteffectivepassage}}
+\label{fig:colbert}
+\end{figure}
+\section{Sequence alignment using neural networks}
+The basis and gold standard for pairwise sequence alignment are the two dynamic programming methods: the Needleman-Wunsch algorithm for global alignment and the Smith-Waterman algorithm for local alignment.~\cite{NEEDLEMAN1970443}\cite{SMITH1981195} Both methods compute optimal alignments by filling a score matrix based on a chosen substitution matrix and gap penalties. Both methods are highly effective in detection of homologous proteins with high sequence identity, but performance rapidly declines in the so-called ‘twilight zone’ of 20–35\% sequence identity, where true homologs and unrelated sequences become difficult to distinguish based on sequence alone. They are also prohibitively expensive for large datasets, since the matrix computation must be executed on every possible sequence pair. To address this scaling problem, many heuristics have been developed, the most popular of which is the use of seeds to generate and compare sequence profiles. An example of this family of heuristics is BLAST~\cite{ALTSCHUL1990403}, which has become the standard in database search over the years. Another family of heuristics uses hidden Markov methods to model amino acid mutations, insertions, and deletions from existing multiple sequence alignments (MSAs). An alignment between two sequences can then be obtained by utilizing the Viterbi algorithm to compute the likelihood and E-value of the most probable alignment~\cite{10.1093/nar/gkr367}. This class of heuristics offers explicit modeling of insertions/deletions and a more statistically principled interpretation of alignments, but is usually much more computationally expensive compared to profile-based approaches.
+
+With the rise of machine learning and neural networks, many models have been proposed to achieve better homology detection in the 'twilight zone'. An example is DEDAL (Deep Embedding \& Differentiable Alignment)~\cite{Llinares-Lopez2021.11.15.468653}, which uses a neural encoder to generate three different matrices for mutation, insertion, and deletion. Using a smooth approximation of the Smith-Waterman algorithm, the model combines the three matrices and generates soft alignments that are trained using manually curated multiple sequence alignments (MSAs) from the Pfam-A database~\cite{10.1093/nar/gkaa913}. Results showed that DEDAL is capable of detecting homology better than standard alignment using the best-optimized matrix (PFASUM)~\cite{pfasum} on the Pfam dataset, suggesting a possible new avenue for homology detection. Similar findings are also echoed by Iovino et al., who introduced PEbA (Protein Embedding based Alignment)~\cite{embedding_based_alignment}, which uses existing protein language models (PLMs) to generate sequence alignments. PEbA, on average, produces more accurate alignments than the standard Smith-Waterman algorithm using the BLOSUM score matrix, even in the "twilight zone". The model also showcases the difference in the two state-of-the-art PLMs, ProtT5~\cite{elnaggar2022prottrans} and ESM-2~\cite{doi:10.1126/science.ade2574}, where PEbA with ProtT5 performs much better than with ESM-2, suggesting that ProtT5 embeddings capture residue information more effectively. This difference in performance was attributed to training rather than the model architecture, since ProtT5 was initially trained on a large, redundant database BFD~\cite{Jumper2021}, then fine-tuned on UniRef50~\cite{10.1093/bioinformatics/btm098}, a smaller, clustered dataset. The ESM-2 model was, however, trained solely on UniRef50, limiting the number of sequences seen during training.
+
+Some other approaches in the application of neural networks in homology detection have focused on reducing computational requirements to improve search efficiency. An example is NEAR~\cite{10.1093/bioinformatics/btaf198}, which was introduced in 2025 as a lightweight alternative to PLMs and was intended to serve as the prefiltering module for the nail framework~\cite{Roddy2024.01.27.577580}. The basis of NEAR is a convolutional neural network with skip connections, trained to generate amino-acid-level embeddings, i.e. the model generates one embedding vector for each amino acid in the sequence, so that amino acids in similar environments have similar embeddings. NEAR was shown to be more lightweight, generating smaller, easier-to-handle embeddings than traditional PLMs while achieving higher recall and higher non-homologous filtration rate than standard tools.
+
+\Chapter{Theoretical background}
+\section{Embedding space construction}
+The method for embedding space construction is largely based on the Late Interaction mechanism popularized by ColBERT (See Figure~\ref{fig:protencoder}). First, the input sequences are tokenized, where each coded amino acid is mapped to a \(d_{tok}\)-dimensional vector. This embedding space is typically low-dimensional and represents amino acids numerically while preserving their relationships; that is, similar amino acids are mapped to nearby points in the vector space. The mapping is deterministic, trainable, and can be represented with an embedding function \(f_{tok}: \mathcal{A}\rightarrow \mathbb{R}^{d_{tok}}\).
+
+The embedded amino acid sequences are then passed through an encoder that captures local relationships between residues. For each input embedding vector, the encoder produces an L2-normalized embedding vector of \(d_{emb}\)-dimensional, representing the local amino acid environment. \(d_{emb}\) is typically much larger than \(d_{tok}\) to sufficiently capture the complexity of the amino acid environment: in general, a larger environment receptive field requires a higher-dimensional embedding space.
+
+For any input sequence pair \(u\) and \(v\) of length \(m\) and \(n\) respectively, their embeddings can be multiplied to obtain a cosine similarity matrix \(S\) of size \(m \times n\) with values in the range of \([-1,1]\), with a similarity value of 1 indicating that the token pairs are identical, and value of -1 indicating that the token pairs are extremely dissimilar. A loss function can then be applied to the similarity matrix to optimize the embedding space.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{figures/protencoder.png}
+\end{center}
+\caption{Outline of the Late Interaction mechanism and the overall architecture of the encoder function.}
+\label{fig:protencoder}
+\end{figure}
+
+The main loss function in ColBERT for ranking document similarity is the MaxSim loss function, which sums the maximum cosine similarity of every query token against every target token (see Figure~\ref{fig:colbert}). However, in the biological context, homology between two sequences is often determined by a small subregion, rendering an all-against-all aggregation over the whole sequence unhelpful and noisy. Therefore, the contrastive InfoNCE loss function~\cite{oord2019representationlearningcontrastivepredictive} was used instead, which can be formulated as follows:
+\begin{align}
+    \mathbb{L}_{\texttt{InfoNCE}}(S, A) &= \frac{1}{\sum_{i \leq m, j \leq n} A_{ij}} \sum_{i \leq m, j \leq n} - A_{ij} \log \frac{\exp (\frac{S_{ij}}{t})}{\sum_{k \leq n} \exp (\frac{S_{ik}}{T})}
+\end{align}
+where \(A\) is the binary reference alignment of \(u\) and \(v\), i.e.
+\begin{align}
+    A_{ij} = \begin{cases}
+        1, \text{ if \(u[i]\) and \(v[j]\) are aligned} \\
+        0, \text{ else}
+    \end{cases}
+\end{align}
+and \(T\) is the temperature parameter, serving as the scaling factor for \(S\). The purpose of the loss is to boost the contrast between the similarity of target token pair \(S_{ij}\) when \(A_{ij} = 1\) against the similarity of all other alignment possibilities for \(u[i]\) (See Figure~\ref{fig:infonce}). Since \(\mathbb{L}_{\texttt{InfoNCE}}(S)\) is not symmetric with regard to \(u\) and \(v\), the final loss is symmetrized by transposing both cosine similarity and reference matrices:
+\begin{align}
+    \mathbb{L}_{\texttt{InfoNCE\_symmetric}}(S, A) &= \frac{1}{2} (\mathbb{L}_{\texttt{InfoNCE}}(S,A) + \mathbb{L}_{\texttt{InfoNCE}}(S^\intercal, A^\intercal))
+\label{eq:infoncesym}
+\end{align}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{figures/InfoNCE.png}
+\end{center}
+\caption{Outline of the InfoNCE loss function. For each aligned residue pairs \((u[i],v[j])\) in the reference alignment (bright cells in top right matrix), the loss function boosts its contrast (pink) against every other alternative pairing (beige) \((u[i],v[k]), k\in [1,n], k\neq j\).}
+\label{fig:infonce}
+\end{figure}
+
+\section{Capturing amino acid environment with convolutional filters}
+A classic technique for building sequence profiles is \(k\)-mer hashing, in which a sliding window is moved across the sequence to extract all contiguous substrings of length \(k\), which are then encoded into a compact numerical representation. To mimic this technique, blocks of convolutional filters were used to capture and extract local amino acid features. Given an input \(X \in \mathbb{R}^{L\times d}\) and a kernel \(W\in \mathbb{R}^{K\times d}\), a \(d\)-dimensional analog to the \(k\)-mer hashing method can be defined as:
+\begin{align}
+    f_{\text{depthwise}}(X)_{t,c} = \sum_{i=1}^K W_{i,c} X_{t+i,c}
+\end{align}
+The above formulation describes a cross-correlation between corresponding dimensions in \(X\) and \(W\) and is implemented in deep learning as the depthwise convolution operation. \(K\) is referred to as the kernel size. This operation can be shown to be a generalization of both \(k\)-mer and spaced seed hashing. In particular, \(k\)-mer hashing corresponds to using the same uniform convolutional kernel of size \(k\) on all \(d\) dimensions, while spaced seed hashing corresponds to the same scheme, with the pattern of 0s in the seed mapped to kernel elements with a value of 0. A depthwise convolutional block can then be formulated as:
+\begin{align}
+    F_{\text{depthwise}}(X) = \text{ReLU}(\text{Norm}(f_{\text{depthwise}}(X)))
+\end{align}
+where ReLU refers to the rectified linear unit function, \(\text{ReLU}(x)=\max \{x, 0\}\), and Norm refers to a normalization scheme, often used in deep learning to stabilize and accelerate training by keeping the distribution of features consistent between layers. The normalization also helps to ensure that the activation function operates on a well-scaled input space.
+
+It is commonly observed in deep learning that multiple convolutional layers often perform much better than a single layer with an equivalent number of parameters. An often-cited reason is the increase in the number of nonlinear activation layers, which increases the nonlinearity of the approximate function. Another reason, specifically for convolutional filters, is that, with a hierarchical architecture, feature extraction can be performed across multiple layers, with earlier layers focused on narrow local features and later layers on broader regional context. Following this hypothesis, multiple convolutional blocks are used in a hierarchical fashion, where each subsequent block aims to capture wider sequence context and therefore requires more dimensions.
+
+In order to soften the dimensional transition between blocks, a lightweight pointwise convolutional layer was introduced at the end of each block, which can be described mathematically as:
+\begin{align}
+    f_{\text{pointwise}}(X)_{t,c_{out}} &= \sum_{i=1}^K W_{c_{out},c_{in}} X_{t,c_{in}} \\
+    F_{\text{pointwise}}(X) &= \text{ReLU}(\text{Norm}(f_{\text{pointwise}}(X)))
+\end{align}
+For each output dimension, the pointwise convolutional operation computes a linear combination of the \(d_{in}\) channels.
+
+Another parameter of interest is the dilation of the convolution. With a dilation parameter \(r\in \mathbb{N}, r\geq 1\), a depthwise dilated convolution can be described as:
+\begin{align}
+    f_{\text{depthwise\_dilated}}(X)_{t,c} &= \sum_{i=1}^K W_{i,c} X_{t+r\times i,c} \\
+    F_{\text{depthwise\_dilated}}(X) &= \text{ReLU}(\text{Norm}(f_{\text{depthwise\_dilated}}(X)))
+\end{align}
+The dilated convolutional scheme allows kernel elements to be spaced out, leading to a larger receptive field without increasing model complexity. In a series of blocks, the dilation also reduces redundant overlap between different hierarchies, making the feature extraction more efficient. The final formulation for a convolutional block can be summarized as:
+\begin{align}
+    F_{\text{block}}(X) = F_{\text{pointwise}}(F_{\text{depthwise\_dilated}}(X))
+\end{align}
+\section{Preserving amino acid relationship with Laplacian regularization}
+As described above, the encoder comprises multiple convolutional filters with varying levels of dilation, resulting in a large effective receptive field. However, this also makes the encoder prone to bias in the sequence dataset, since such a large receptive field invites an enormous number of possible amino acid environments. To account for such bias, a regularization term was introduced to guide the tokenization process to follow the BLOSUM62 matrix ranking. This term is modeled after a graph-based approach of the Laplacian norm~\cite{belkin2003laplacian}, where amino acid relationships are formulated as a weighted undirected graph with adjacency matrix \(W\), with each amino acid being a vertex and each edge weight between two amino acids corresponding to a distance formulated as the additive inverse of their BLOSUM62 \((B)\) score:
+\begin{align}
+    W_{ij} = -B_{ij}
+\end{align}
+The regularization term to minimize can then be described as follows:
+\begin{align}
+    \mathbb{L}_{Laplacian}(E, W) = \text{tr}(E^\intercal LE)
+\label{eq:laplace}\end{align}
+where \(E\) is the \(|\mathcal{A}|\times d_{tok}\) embedding matrix and \(L\) the Laplacian matrix associated with the amino acid relationship graph. Per definition, \(L\) is formulated as:
+\begin{align}
+    L = D - W
+\end{align}
+where \(D\) is the degree matrix, i.e. a diagonal matrix \((d_{ij})\) with values:
+\begin{align}
+    d_{ij} = \begin{cases}
+        \sum_{k} W_{ik}, &\text{ if \(i = j\)}\\
+        0, &\text{else}
+    \end{cases}
+\label{eq:diag}
+\end{align}
+Equation~\ref{eq:laplace} could then be expressed as:
+\begin{align}
+    \mathbb{L}_{Laplacian}(E,W) &= \text{tr}(E^\intercal LE)\\
+    &= \text{tr}(E^\intercal (D-W)E)\\
+    &= \text{tr}(E^\intercal DE) - \text{tr}(E^\intercal WE)\\
+    &= \sum_i d_ie_i^\intercal e_i - \sum_{i,j} W_{ij} e_i^\intercal e_j\\
+    &= \sum_i d_i - \sum_{i,j} W_{ij} e_i^\intercal e_j\\
+    &= \sum_{i,j} W_{ij} - \sum_{i,j} W_{ij}e_i^\intercal e_j
+\label{eq:laplace2}
+\end{align}
+And since \(\sum_{i,j} W_{ij}\) is a constant, in order to minimize the regularization term \(\mathbb{L}_{Laplacian}\), \(\sum_{i,j} W_{ij}e_i^\intercal e_j = \sum_{i,j} W_{ij}K_{ij}\) must be maximized, i.e. the sum of all entries in the elementwise product of the adjacency matrix \(W\) and the cosine similarity matrix \(K = E^\intercal E\) from the amino acid embeddings.
+
+This formulation also offers an intuitive view of the regularization process. The partial derivative of the loss function with respect to each cosine similarity value is:
+\begin{align}
+    \frac{\partial \mathbb{L}_{Laplacian}(E,W)}{\partial K_{ij}} = -W_{ij}
+\end{align}
+Therefore, minimizing \(\mathbb{L}_{Laplacian}\) involves maximizing similarity \(K_{ij}\) if \(W_{ij} < 0\), and minimizing \(K_{ij}\) if \(W_{ij} > 0\). In that sense, the regularization term minimizes the distance between amino acid pairs with negative entries in the adjacency matrix, which by definition are amino acid pairs with high BLOSUM62 scores, and similarly maximizes the pairwise distance of pairs with low BLOSUM62 scores. The edge weights in the adjacency matrix serve as a scaling factor; a higher absolute value indicates a higher priority for minimization or maximization.
+
+\section{Approximative vector search}
+In 2011, Jégou et al. introduced the IVFADC (Inverted file with asymmetric distance computation) indexing scheme, which combines an inverted file (IVF) structure with product quantization~\cite{10.1109/TPAMI.2010.57}. The framework quickly proved superior to the raw IVF scheme, became the industry standard for vector search, and was later integrated into the FAISS library as IVFPQ~\cite{douze2025faiss}. Here, the foundational sketch of the framework is outlined, including the basis of inverted-file indexing and product quantization.
+
+The Inverted File index utilizes a coarse quantizer obtained via \(k\)-means clustering. Formally, a quantizer is a function that maps a \(d\)-dimensional vector \(v \in \mathbb{R}^d\) to a vector \(q(v)\):
+\begin{align}
+    q(v): \mathbb{R}^d \rightarrow C=\{c_1,\ldots,c_K\}
+\end{align}
+where \(C\) denotes a set of centroid vectors. This quantizer partitions the vector space in \(K\) Voronoi cells: \(\mathcal{V}_i = \{v\in \mathbb{R^d}|q(v) = c_i\}\). During database creation, each target vector assigned to the same centroid is stored in the same inverted list. During the search phase, the query vector is compared to all centroids, and only the vectors contained in \(n_{probe}\) nearest neighboring clusters are examined, avoiding exhaustive comparison and significantly reducing the number of distance computations. In high dimensions, this approach encounters a problem: the number of centroids \(k\) becomes prohibitively large, requiring exponentially more data points to train an adequate quantizer.
+
+Jégou et al. expanded on IVF by using a product quantization scheme to both alleviate the need for an exponentially growing dataset and reduce the memory footprint. The IVFADC approximate search method consists of two layers: a coarse quantizer \(q_c\) obtained via IVF and a group of fine product quantizers \(q_p\). Between the two layers, each vector \(x\) of dimension \(d\) is decomposed into its associated centroid and a residual \(r\):
+\begin{align}
+    r(x) = x - q_c(x)
+\end{align}
+The residual is then divided into \(m\) distinct subvectors \(r_j\), \(1 \leq j \leq m\), each of dimension \(D = \frac{d}{m}\), where \(m\) is a divisor of \(d\). The subvectors \(r_j\) are quantized separately using \(m\) distinct \(k^*\)-means quantizers \(q_j\).
+\begin{align}
+    r(x) = (r_j) \approx (q_j(r_j))
+\end{align}
+Each subspace contains \(k^*\) centroids, therefore the subquantization effectively generates \((k^*)^m\) centroids for the residuals. However, the space requirement to store the centroids is only \(mDk^*\). This outlines the strength of product quantization: the production of a large set of centroids from several small sets of centroids using the Cartesian product. This step also aggressively quantizes vectors into a series of binary codes, reducing storage requirements significantly and making database vector storage and handling more efficient than in raw IVF.
+
+The distance \(d(x,y)\) between a query vector \(x\) and a target vector \(y\) is then approximated as the distance \(\hat{d}(x,y) = d(x,y)\) between \(x\) and a reconstruction of \(y\), \(\hat{y}\). This distance is then approximated as the distance between the query residual \(r(x)\) and the quantized target residue \(q_p(r(y))\). This approximation is described as asymmetric distance computation (ADC), where only the target \(y\) is quantized during database construction, and can be mathematically expressed as follows:
+\begin{align}
+    d(x,y) &\approx \hat{d}(x,y) \\
+    &= d(x,\hat{y}) \\
+    &\approx d(r(x),q_p(r(y))) \\
+    &= \sqrt{\sum_j (d(r_j(x), q_j(r_j(y)))^2)}
+\label{eq:adc}
+\end{align}
+This approximation allows a very fast and efficient approximation of vector distance. Given a query vector \(x\), \(n_{probe}\) nearest Voronoi cells are probed. For each cell, the residual \(r(x)\) is computed and divided into subspaces \(r_j(x)\). The distance between \(r_j(x)\) to all subquantizer centroids \(c_{j,k}, 1\leq k\leq k^*\) is then computed and stored in a lookup table. From this table, the distance \(d(x,y)\) can then be efficiently estimated for every candidate target \(y\) using Equation~\ref{eq:adc}. The index building steps and the search algorithm are summarized in Algorithm~\ref{code:index_ivfadc} and \ref{code:query_ivfadc}, respectively.
+
+\begin{algorithm}
+\caption{Index building steps in IVFADC}
+\label{code:index_ivfadc}
+\begin{tabular}{@{}l@{~}l}
+\textbf{Input:}&Target vector set \(T\)\\
+               &Coarse quantizer \(q_c\) \(Target\) \\
+               &Group of fine quantizers \(q_p = (q_j)\)
+\end{tabular}
+\begin{algorithmic}
+\For{\(t \in T\)}
+\State Quantize \(t\) to \(q_c(t)\)
+\State Compute residual \(r(t) = t - q_c(t)\)
+\State Quantize \(r(t)\) to \(q_p(r(t))\), i.e. quantize each subspace \(r_j(t)\) to \(q_j(r_j(t))\) \(\forall q_j \in q_p\)
+\State Add a new entry to the inverted list corresponding to \(q_c(t)\) as a list of centroid identifier.
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Search algorithm in IVFADC}
+\label{code:query_ivfadc}
+\begin{tabular}{@{}l@{~}l}
+\textbf{Input:}&Query vector \(q\)\\
+               &Coarse quantizer \(q_c\)\\
+               &Group of fine quantizers \(q_p = (q_j)\) \\
+               &Number of nearest neighbor \(k\) \\
+               &Number of probing Voronoi cells \(n_{probe}\)
+\end{tabular}
+\begin{algorithmic}
+\State Quantize \(q\) to its \(n_{probe}\) nearest neighbor centroids \(C_k(q) = \{c_i|1\leq i\leq n_{probe}\}\)
+\For{\(1 \leq i \leq n_{probe}\)}
+\State Compute residual \(r(q) = q - c_i\)
+\State Compute the squared distance \(d(u_j(r(x)), c_{j})^2\) for each subquantizer \(q_j\) with centroid \(c_j\) and store all distances in a lookup table
+\State Compute the squared distance between \(r(q)\) and all the indexed vectors of the inverted list using Equation~\ref{eq:adc} and the lookup table
+\State Select the top-\(k\) nearest neighbors based on the estimated distances.
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\Chapter{Design \& Implementation}
+This section summarizes the design and implementation of a workflow that leverages the above ideas in a practical programming system.
+\section{Data preprocessing and preparation}
+The UniRef50 dataset from UniProt~\cite{10.1093/bioinformatics/btm098} was used as the data source for training and validation. Clustered at 50\%, the dataset has low redundancy and high sequence diversity, making it well-suited for machine learning applications. First, the dataset is filtered to retain only sequences of length between 200 and 512. The sequences are then preprocessed by replacing invalid amino acids with an unknown character. The amino acid alphabet used in the application consists of 24 characters, including 20 standard amino acids, 2 ambiguous codes (B for Asparagine or aspartate and Z for Glutamine or glutamate), a code for the unknown amino acid, and a padding character. After this preprocessing step, over 27 million sequences remain.
+
+To generate alignments, subsets of sequences were then sampled uniformly, generating two 3-million-sequence subsets for training, denoted query \(Q_T\) and target set \(T_T\), and two 1-million-sequence subsets for validation and testing, denoted query \(Q_V\) and target set \(T_V\). Alignments are then generated for each sequence subset pair using MMseqs2~\cite{Steinegger079681} with the highest sensitivity settings of 0.7, creating the training and validation alignment sets \(A_T\) and \(A_V\) respectively. MMseqs2 was chosen over the exhaustive all-against-all Smith-Waterman algorithm for its ability to conduct fast homology detection without exhaustive search, making the creation of the input dataset cheaper and more diverse than using full Smith-Waterman alignment, and since the last step of MMseqs2 is a vectorized striped Smith-Waterman alignment stage, the program should also generate alignments close to the gold standard. The obtained alignments are then packaged in tabular format, where each table row corresponds to an alignment between a query and a target sequence. To conserve space, each alignment string is split into two bitvectors of length 512 each. In training and validation, the binary reference alignment masks can be cheaply recovered from the bitvectors. The schema for the data preprocessing pipeline is summarized in Figure~\ref{fig:dataprep}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{figures/dataprep_2.png}
+\end{center}
+\caption{Outline of the data preprocessing pipeline}
+\label{fig:dataprep}
+\end{figure}
+\section{ProtEncoder}
+ProtEncoder is a neural encoder written in PyTorch~\cite{10.5555/3454287.3455008} that transforms a protein sequence into a set of embeddings, each corresponding to a local amino acid environment on the sequence. The structure of the encoder can be described as follows:
+\begin{enumerate}
+    \item A tokenizer embedding each amino acid into an L2-normalized vector space.
+    \item A series of convolutional blocks aiming to capture local amino acid context.
+    \item A multilayer perceptron projection head that condenses the output dimension.
+    \item Output embeddings are L2-normalized.
+\end{enumerate}
+
+The parameter choice for the structure of the convolutional blocks is summarized in Table~\ref{tab:conv}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Layer & Number of input dimensions & Kernel size & Dilation \\
+\hline
+1& 32 & 3 & 1 \\
+2& 96 & 5 & 2 \\
+3& 160 & 7 & 3 \\
+4& 256 & 9 & 4 \\
+5& 320 & 11 & 5 \\
+6& 384 & 13 & 6 \\
+\hline
+\end{tabular}
+\caption{Parameters of each convolutional layer for feature extraction.}
+\label{tab:conv}
+\end{center}
+\end{table}
+
+The encoder outputs a 320-dimensional embedding for each amino acid in the input sequence. ProtEncoder was trained using AdamW~\cite{loshchilov2019decoupledweightdecayregularization} with a learning rate of \(0.0004\) for 2 epochs on a subset of 120 million sequences from \(A_T\) and validated on a subset of 12 million sequences from \(A_V\). Each training step contains 400 sequence pairs. The training loss function is a combination of the InfoNCE loss and graph Laplacian loss (see Equation~\ref{eq:infoncesym} and \ref{eq:laplace2} respectively):
+\begin{align}
+\mathbb{L}_{training}(S,A,E,W) = \mathbb{L}_{InfoNCE\_symmetric}(S, A) + 0.002 \times \mathbb{L}_{Laplacian}(E,W)
+\end{align}
+\section{ProtSearch}
+The search workflow ProtSearch was built in C++ as a program that combines ProtEncoder with the vector search library FAISS~\cite{douze2025faiss} and a fragment assembly workflow to approximate sequence alignments. The steps in ProtSearch are visualized in Figure~\ref{fig:protsearch} and can be outlined as follows:
+\begin{enumerate}
+    \item A set of target sequences is encoded using ProtEncoder, yielding a set of embeddings \(S_t\) and a reverse map from embedding index to target sequence, serving as an offline index.
+    \item Similarly, a set of query sequences is encoded using ProtEncoder, yielding a set of query embeddings \(S_q\) and a reverse map from embedding to query sequence.
+    \item Using FAISS, an approximate search of \(S_q\) over \(S_t\) is conducted. The sensitivity of this search can be adjusted using two parameters: \(k\) signifies the number of hits per embedding, and \(s_{min}\) the lower bound on cosine similarity.
+    \item Using the reverse maps, diagonals of consecutive hits for each query-target pair are constructed. The filtering of these reads can be controlled using the tolerance parameter \(p_t\). Since the FAISS search is only approximate, it is possible that a true environment hit may not be found, leading to a gap in the diagonals. To account for the possible missing hit, tolerance \(p_t\) allows bridging the gap and recovering the true alignment diagonal. This fix should not lead to errors in practice, as conventional gap models penalize gap opening heavily, making such short diagonal gaps impractical.
+    \item Each group of diagonals from the same query-target sequence pair is processed simultaneously, where each diagonal is first split into segments so that there is no partial overlap. They are then assembled using a local chaining dynamic programming algorithm.
+\end{enumerate}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{figures/protsearch.png}
+\end{center}
+\caption{Visualization of the ProtSearch workflow. An approximate vector search using FAISS is conducted (a), the hits are assembled into diagonals (b), which are then split into non-partially overlapped segments (c) and scored using BLOSUM62 matrix (d). The segments are then assembled using a local chaining algorithm (e).}
+\label{fig:protsearch}
+\end{figure}
+
+\Chapter{Results, Benchmark \& Performance}
+This chapter summarizes the results of training the model and of experiments exploring the viability of ProtSearch both as a prefilter to aggressively remove non-homologous sequence pairs and as an aligner. All training and experiments were conducted using a machine with an Intel Xeon Gold 6430 CPU, an Nvidia L40S GPU, and 128 GB of RAM.
+
+\section{Training and validation}
+The training curve is depicted in Figure~\ref{fig:train}, along with the validation result at the end of each epoch. The plot shows clear convergence of both InfoNCE and graph Laplacian loss. The validation loss closely follows the training statistics, indicating good generalization of the model.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{figures/match_train.png}
+\includegraphics[scale=0.42]{figures/tokenizer_plot.png}
+\includegraphics[scale=0.42]{figures/total_train.png}
+\end{center}
+\caption{Training and validation statistics. The top-left plot depicts the InfoNCE loss; the top-right figure plots the graph Laplacian regularizer; the bottom plot shows the total training curve.}
+\label{fig:train}
+\end{figure}
+
+The absolute value of the InfoNCE loss, however, is not as low as expected, indicating that some entries in the cosine similarity matrix do not achieve good contrast in their corresponding rows and columns. To illustrate this issue, some validation samples are visualized in Figure~\ref{fig:valid_samples}. The figure depicts each sample as a pair of a cosine similarity matrix and a reference matrix, both visualized as a heatmap, with brighter colors indicating higher values. The cosine similarity is clamped to 0-1 to enhance contrast and highlight aligned segments. The figure shows that while the model can generally estimate the alignment position correctly, it fails to reliably capture similarity between residue pairs in short alignment segments. This problem is further investigated in Section~\ref{subsec:diag}.
+
+\begin{figure}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, right]{figures/0.png}
+        \end{center}
+    \end{subfigure}
+    \hspace{0.02cm}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, left]{figures/0_ref.png}
+        \end{center}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, right]{figures/1.png}
+        \end{center}
+    \end{subfigure}
+    \hspace{0.02cm}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, left]{figures/1_ref.png}
+        \end{center}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, right]{figures/2.png}
+        \end{center}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \begin{center}
+        \includegraphics[height=5.8cm, left]{figures/2_ref.png}
+        \end{center}
+    \end{subfigure}
+\caption{Some samples of computed cosine similarity matrix from a query and a target sequence along with their corresponding reference alignment matrix depicted as heatmap. The cosine similarity matrices are clamped between 0 and 1 for clarity. Left: Cosine similarity matrix. Right: Reference alignment matrix.}
+\label{fig:valid_samples}
+\end{figure}
+
+Next, the initial amino acid embedding space is of interest. To achieve good generalization, the tokenizer's initial embedding space must be biologically meaningful. To investigate if this is the case for ProtEncoder, the tokenizing vectors of the amino acids are projected into 2D space using principal component analysis (PCA)~\cite{jolliffe2002pca} and visualized in Figure~\ref{fig:tokenizer_pca}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.7]{figures/pca_token.png}
+\end{center}
+\caption{2D-PCA projection of the amino acid embeddings.}
+\label{fig:tokenizer_pca}
+\end{figure}
+
+From the PCA plot, it is apparent that the amino acid embedding space is hierarchically clustered. The largest split occurs in the axis of the first PCA dimension, PCA1, where all nonpolar amino acids lie on the right with values larger than \(1\), and all polar amino acids have values smaller than \(1\). Further splits can also be observed in each cluster. Charged amino acids, for example, aspartic acid (D) and glutamic acid (E), have PCA2 values larger than \(0\), while small, uncharged, polar amino acids, for example, glycine (G) and serine (S), have PCA2 values smaller than \(0\). The same split is also seen in the cluster of nonpolar amino acids: aromatic amino acids (tyrosine (Y), tryptophan (W), and phenylalanine (F)) have PCA2 values larger than 0, while aliphatic amino acids have PCA2 values smaller than 0, for example, leucine (L) and isoleucine (I). Some deficiencies in the tokenizing space can also be observed: alanine (A) and tyrosine (Y) are farther from their respective clusters than expected.
+
+The correlation of corresponding entries in the BLOSUM62 matrix and the tokenizing cosine similarity matrix is also tested. The Spearman's correlation coefficient is 0.75, indicating a strong correlation in amino acid similarities.
+
+\section{Sensitivity benchmark}
+To estimate real-world performance, the workflow's precision and recall (PR) were computed against a reference dataset using various parameter sets and compared with the standard tools MMseqs2~\cite{Steinegger079681} and DIAMOND~\cite{Buchfink2023.01.24.525373}.
+
+The sequences used for the sensitivity benchmark were sampled from \(Q_V\) and \(T_V\), where \numprint{1000} and \numprint{100000} sequences were sampled from each set, respectively, and the two subsets are aligned using an implementation of the all-against-all Smith-Waterman algorithm from the library GTTL~\cite{gttl} with a bitscore cutoff of 47. The obtained set of alignments is then used as a reference data set.
+
+The parameter set for ProtSearch was generated using grid search: the number of hits per vector \(k\) was varied from 1 to 128 with an exponential step of 2, and the lower threshold for cosine similarity \(s_{min}\) was varied from 0.3 to 0.9 with a linear step of 0.1.  MMseqs2 uses a single sensitivity parameter \(s\) to control search, and for the PR measurement, the parameter ranged from 0.1 to 0.7 with a step of 0.1, and from 1 to 7 with a step of 1. DIAMOND has six presets to control sensitivity: "fast", "mid sensitive", "sensitive", "more sensitive", "very sensitive", and "ultra sensitive". Other than in Subsection~\ref{subsec:approx}, where approximate search is compared with exact search, FAISS was configured to use exact search.
+
+\subsection{Sequence-level}
+The PR curve comparing the performance of ProtSearch to MMseqs2 and DIAMOND is visualized in Figure~\ref{fig:pr_flat}. The individual measurements are summarized in Table~\ref{tab:pr_flat}.
+\begin{landscape}
+\thispagestyle{empty}
+\begin{figure}[p]
+\begin{center}
+\includegraphics[scale=0.57]{figures/pr_curve_flat.png}
+\end{center}
+\caption{Comparison of PR curve of ProtSearch against MMseqs2 and DIAMOND. Each PR data point of ProtSearch is annotated with the corresponding parameter configuration summarized as a pair of numbers \((k, s_{min})\). MMseqs2 data points are annotated with their corresponding sensitivity parameter. DIAMOND data points are annotated with their corresponding sensitivity preset.}
+\label{fig:pr_flat}
+\end{figure}
+\end{landscape}
+The PR curve shows that ProtSearch is a versatile tool for sequence search. Using the parameter sets, both the high-precision and high-recall ends of the curve can be measured, whereas this is not the case for both MMseqs2 and DIAMOND, where high recall of more than 0.6 cannot be achieved. Raising \(k\) and lowering \(s_{min}\) also generally have the intended effect of broadening the search range, increasing recall while reducing precision.
+
+ProtSearch also outperforms MMseqs2 on precision and recall; for every MMseqs2 configuration, there is a ProtSearch configuration that performs better on both metrics. Meanwhile, DIAMOND has higher precision than ProtSearch but cannot be evaluated at high recall levels. The reason for this may be that DIAMOND aims to be a conservative search tool for sequences with high identity, and therefore uses many heuristics to aggressively filter out non-homologous candidates, whereas ProtSearch, by varying \(k\), can explore a broader range of sequence identity while sacrificing precision.
+
+Further experiments were conducted on the search results using the configuration \(k=128, s_{min}=0.6\), as it offers a good trade-off between precision and recall. To explore whether false-positive samples exhibit characteristics that could be exploited for further refinement, numerical features were computed for each positive sample. These features include the average alignment length (i.e., the average distance between the first and last aligned residues across both sequences), the ungapped alignment score computed using ProtSearch, the number of aligned residues, the average cosine similarity aggregated over the whole alignment, and the maximum cosine similarity over the whole alignment. The distribution of each feature for false positive samples and true positive samples is depicted in Figure~\ref{fig:fp}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.3]{figures/fp_sim_0_0_normal.png}
+\end{center}
+\caption{Comparison false positive samples against true positive samples using some computed features. Left: distributions from false positive samples. Right: distributions from true positive samples. From top to bottom: average alignment length, ungapped alignment score, number of aligned residues, average cosine similarity, maximum cosine similarity.}
+\label{fig:fp}
+\end{figure}
+
+Figure~\ref{fig:fp} clearly shows the difference in distribution of all features between false positive and true positive samples. False-positive samples have, on average, short alignment lengths and low ungapped alignment scores due to amino acid mismatches. Their measures concerning cosine similarity are also skewed toward lower values, both lying close to 0.65, whereas true-positive samples have, on average, a maximum cosine similarity of around 0.85 and an average cosine similarity of 0.70. This means that while the precision of ProtSearch is low in this configuration, the search result can potentially be refined. This can be implemented using additional simple filters or by utilizing a fast, scalable, vectorizable machine learning model, e.g., logistic regression or a support vector machine.
+
+\subsection{Residue-level}
+\label{subsec:diag}
+This section explores the accuracy of the model in predicting alignment on the segment and residue levels. Similar to above, experiments were carried out on configuration \(k=128, s_{min}=0.6\).
+
+Figure~\ref{fig:valid_samples} shows that the model cannot recover short alignment segments. The recovery rate of alignment segments, depending on their length, is therefore measured to validate this observation. Here, an alignment segment is defined to be recovered when ProtSearch finds a segment from the same sequence pair with the same diagonal index, and the overlap between the two segments is greater than 50\% of the reference segment length. It should also be noted that this percentage-based metric inherently favors short segments, as they only need a low number of hits to be counted as recovered. The recovery rate of alignment segments depending on their length is illustrated in Figure~\ref{fig:diags}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{figures/diags.png}
+\includegraphics[scale=0.5]{figures/recovery.png}
+\end{center}
+\caption{Recovery rate of alignment segments depending on length. Top: absolute count of ProtSearch and reference Smith-Waterman data in log-scale. Blue and orange bars denote the diagonals collected from reference Smith-Waterman and ProtSearch data respectively. Bottom: Recovery rate depicted as percentage.}
+\label{fig:diags}
+\end{figure}
+
+From Figure~\ref{fig:diags}, it is apparent that the recovery rate for short alignment segments (\(<100\) residues) is significantly lower. Segments shorter than 20 amino acids, while being the most frequent, have a recovery rate below 10\%, underscoring the model's difficulty in capturing short-range sequence context. The reason for this deficiency may be the formalization of local features as convolution blocks, which is discussed in more detail in Chapter~\ref{chapter:conclusion}.
+
+General precision and recall of alignment on a residue level were also measured and plotted in Figure~\ref{fig:diag_pr}. The measurements show generally high precision, indicating that the alignment assembly stage results in a series of residues that are also present in the true reference alignment. Recall, however, is generally low, meaning a large number of positive residue hits are missing. This fits the observation above that a high number of short alignment segments, which have the highest frequency, could not be recovered, and is the main obstacle to the future use of ProtSearch as an aligner.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{figures/diag_precision.png}
+\includegraphics[scale=0.5]{figures/diag_recall.png}
+\end{center}
+\caption{Histogram of precision (top) and recall (bottom) of aligned residues for true positive samples on sequence level.}
+\label{fig:diag_pr}
+\end{figure}
+
+\subsection{Effect of approximative search}
+\label{subsec:approx}
+In this subsection, the experiments above were repeated with FAISS configured to use IVFPQ instead of exhaustive search. IVF is configured to create \(K = \numprint{8192}\) Voronoi cells, PQ is configured to split vectors in \(m=40\) subspaces, each contains \(k^*=256\) centroids. At search time, FAISS is configured to probe \(n_{probe} = 32\) cells. The PR measurements are summarized in Table~\ref{tab:pr_ivfpq}.
+
+Figure~\ref{fig:pr_ivfpq} plots the PR curve additionally with the IVFPQ measurements and shows that while the PR performance when switching to the IVFPQ scheme is slightly worse compared to that of exhaustive search, it still overperforms MMseqs2 and its AUCPR is still reasonably close to the exhaustive search variant. While for most configurations, the performance degrades on both precision and recall, some configurations instead improve on one of the two metrics. For example, the configuration \(k=128, s_{min} = 0.6\) using exhaustive search has a precision value of \(0.101\) and recall value of \(0.645\), while the similar configuration using IVFPQ returns a higher precision value of \(0.129\) and lower recall value of \(0.632\) (see Table~\ref{tab:pr_flat} and \ref{tab:pr_ivfpq}). This can be explained by the fact that IVFPQ only approximates the vector similarity as outlined by Equation~\ref{eq:adc}. Coupling with the manual threshold \(s_{min}\), this may lead to a slightly different set of hits that gets passed to the alignment assembly stage, shifting either precision or recall higher.
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.55]{figures/pr_curve_ivfpq.png}
+\end{center}
+\caption{Comparison of PR curve between ProtSearch using two different search schemes (ProtSearchFlat for exact search, and ProtSearchIVFPQ for approximative search using IVFPQ), MMseqs2 and DIAMOND. Each PR data point of ProtSearchIVFPQ is annotated with the corresponding parameter configuration summarized as a pair of numbers \((k, s_{min})\). MMseqs2 data points are annotated with their corresponding sensitivity parameter. DIAMOND data points are annotated with their corresponding sensitivity preset.}
+\label{fig:pr_ivfpq}
+\end{figure}
+\end{landscape}
+
+The false positive samples of the IVFPQ experiment with \(k=128, s_{min}=0.6\) are also compared with the true positive samples, and the histograms are illustrated in Figure~\ref{fig:fp_ivfpq}. The difference between the distributions is again evident: false-positive alignments are short, low in alignment score, and low in both average and maximum cosine similarity, indicating that IVFPQ is a good approximation for exhaustive search.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.3]{figures/fp_sim_0_0_normal_ivfpq.png}
+\end{center}
+\caption{Comparison false positive samples against true positive samples of the search using ProtSearchIVFPQ using some computed features. Left: distributions from false positive samples. Right: distributions from true positive samples. From top to bottom: average alignment length, ungapped alignment score, number of aligned residues, average cosine similarity, maximum cosine similarity.}
+\label{fig:fp_ivfpq}
+\end{figure}
+
+\newpage
+\section{Performance benchmark}
+Figure~\ref{fig:flat_vs_ivfpq} plots the performance gain when IVFPQ was used instead of exhaustive search. Exhaustive search consistently takes 6 minutes to complete, with the query stage accounting for the majority of the runtime. Switching to IVFPQ reduces the total time to 6 seconds, yielding a 60x performance gain.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{figures/flat_vs_ivfpq.png}
+\end{center}
+\caption{Comparison of search time of ProtSearch in two different search modes: ProtSearchFlat for exhaustive search and ProtSearchIVFPQ for approximative search using IVFPQ. ProtSearchFlat measurements are annotated by its configuration as a pair of number \((k, s_{min})\) while ProtSearchIVFPQ measurements are annotated by its configuration as a triplet of number \((k, s_{min}, n_{probe})\).}
+\label{fig:flat_vs_ivfpq}
+\end{figure}
+
+ProtSearch using the IVFPQ scheme was also compared to other GPU-based search tools, namely MMseqs2-GPU~\cite{Kallenborn2024.11.13.623350} and CUDASW4++~\cite{Schmidt2023.10.09.561526}. Indexing and query time were measured for a query dataset of \numprint{1000} sequences and varying target sequence dataset sizes, and visualized in Figure~\ref{fig:time_comp}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{figures/index_comp.png}
+\includegraphics[scale=0.42]{figures/query_comp.png}
+\end{center}
+\caption{Comparison of search time of ProtSearchIVFPQ against MMseqs2-GPU and CUDASW4++. Left: Time to index a database. Right: Time to query against a database}
+\label{fig:time_comp}
+\end{figure}
+
+Figure~\ref{fig:time_comp} shows the run time deficiency of ProtSearch compared to other tools. Indexing time is about an order of magnitude slower than both CUDASW4++ and MMseqs2. Creating an index for a target dataset with more than a million sequences was not possible on the GPU due to VRAM constraints. This resulted in missing measurements for ProtSearch. The main obstacle to querying was also the time required to load the index (see Figure~\ref{fig:query_profile}). This highlights the main cost of vector search: storing a vector costs much more than storing amino acids as integer codes. Assuming a dataset of one million sequences, each with an average length of 300 residues, the same PQ scheme above \((m = 40, k^*=256)\) would require
+\begin{align}
+    10^6\times 300\times 40\times \log_2 256 = 96\times 10^9
+\end{align}
+bits of space, corresponding to a storage space of 12~GB, which is prohibitively expensive, considering real-world databases are significantly larger than one million sequences.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.42]{figures/index_db.png}
+\includegraphics[scale=0.42]{figures/query_db.png}
+\end{center}
+\caption{Time profile of ProtSearchIVFPQ in indexing (top) and querying (bottom)}
+\label{fig:query_profile}
+\end{figure}
+
+To investigate runtime further, each stage of the program was profiled individually to identify hotspots. Figure~\ref{fig:runtime_profile} shows the result of these measurements with regard to varying input parameters.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{figures/runtime_fixedkn.png}
+\includegraphics[scale=0.4]{figures/runtime_fixedkt.png}
+\includegraphics[scale=0.4]{figures/runtime_fixedtn.png}
+\end{center}
+\caption{Run time profiles of ProtSearch using different configuration set. The profiles are grouped by fixing two out of three parameters. Top: \(k\) and \(n_{probe}\) are fixed. Middle: \(k\) and \(s_{min}\) are fixed. Bottom: \(s_{min}\) and \(n_{probe}\) are fixed.}
+\label{fig:runtime_profile}
+\end{figure}
+
+In all experiments, loading the database index and querying are consistently the two most time-consuming steps, while encoding and, particularly, alignment assembly time are largely insignificant. Interestingly, increasing \(k\) does not significantly affect query time, as shown in Algorithm~\ref{code:query_ivfadc}. \(s_{min}\) also has a negligible impact on execution time, and together with \(k\) only changes the number of environment hits for the alignment assembly stage. \(n_{probe}\) however scales with query time linearly, meaning it is imperative to keep the number of probed Voronoi cells minimal for efficient search time.
+
+\Chapter{Discussion \& Conclusion}
+\label{chapter:conclusion}
+In this paper, a convolutional neural encoder for amino acid environment embedding, ProtEncoder, was introduced, exploring the use of sequence embeddings for homology search. By combining standard sequence-profiling methods with deep learning techniques, the encoder can capture sequence information meaningfully and generalize across different sequence contexts. The InfoNCE loss was the main loss function used to distinguish between similar and dissimilar amino acid environment pairs. Using a graph Laplacian-based regularizer, the amino acid embedding space is biologically meaningful and strongly correlates with the relationship prior BLOSUM62.
+
+Accompanied by ProtEncoder is ProtSearch, a workflow designed to use ProtEncoder along with FAISS to conduct homology search/prefiltering. Experiments show that ProtSearch outperforms MMseqs2 on both precision and recall against a Smith-Waterman reference. Its precision is lower than DIAMOND's, but it offers a much wider search range and can be used for high-recall search. Even though its precision is low at high recall, false-positive samples are discernible from true-positive samples, and therefore, the search can be refined using additional filters or a fast, vectorizable machine learning framework.
+
+In terms of sole search speed, ProtSearch is comparable to MMseqs2-GPU. This can, however, be improved much further by simply skipping query residues, which naturally returns results with lower residue-level resolution but should be comparable on sequence-level performance. Since search time scales linearly with the number of probed Voronoi cells, this parameter can also potentially be reduced to trade sensitivity for speed. ProtEncoder can also be quantized, significantly improving encoding performance by reducing model space consumption. This highlights the potential for ProtSearch to be a fast and sensitive prefilter for homology search applications. This could be implemented by using the candidate sequence pairs found by ProtSearch to restrict the search space of an all-against-all Smith-Waterman alignment stage, similar to MMseqs2.
+
+The biggest obstacle for the workflow, and potentially also for the adoption of sequence embedding in sequence homology search, is identified as the storage and handling of vector indices. Considering the cost to store one single amino acid as an 8-bit (or less) integer, or one \(k\)-mer as a 64-bit integer, ProtSearch uses 320 bits in experiments, which might be prohibitively expensive. Factoring in the need to store millions to billions of sequences and the fact that GPUs are much more limited in memory than CPUs, this severely limits the applicability of ProtSearch and vector search in general. Especially compared to CUDASW4++, which aligns sequences faster and more accurately, it is imperative that the encoder improves significantly in efficiency to compete, especially by reducing the output dimension. This might be achievable by reducing model complexity or changing the feature extraction model completely.
+
+Another needed improvement is in the detection of short alignment segments. ProtSearch shows a steep decline in recovery rate for segments shorter than 100 residues, hampering its ability to conduct a high-recall search. This might be improved by implementing multi-scale extraction, i.e., aggregating embeddings across multiple hierarchies to obtain multi-level sequence context, or by using gradient-boosted methods, i.e., training a complementary, smaller secondary encoder to target short-range similarity. Another possible improvement is to change the feature extraction model. At the boundary of the alignment segment, convolutional filters can exhibit significant noise, and the model must decide their similarity even though a large portion of the kernel does not match. A future fix for this problem might be to use a transformer architecture, allowing the model to skip unmatched residues and improving its compatibility with the gap model.
+
+Compared to standard tools such as MMseqs2 or DIAMOND, parametrization to target a specific sensitivity level is a challenge for ProtSearch. This is particularly crucial because the proper precision-recall tradeoff depends strongly on the use case. For exploratory analyses, such as detecting remote homologs or discovering novel protein families, high sensitivity is preferred even at the cost of increased false positives. In contrast, applications such as functional annotation or clinical interpretation require high specificity, as incorrect assignments may lead to misleading or harmful conclusions. MMseqs2 controls search sensitivity with a single parameter \(s\), which determines the threshold for generating similar \(k\)-mers using a probabilistic framework. In contrast, parameters in ProtSearch depend strongly on the target database, especially the number of database hits \(k\): it must grow linearly with the database size. While increasing \(k\) has a negligible impact on query time, it significantly changes the precision-recall tradeoff. While it can be calibrated on specific databases by running test queries, there is currently no probabilistic framework to determine the proper value for \(k\) given a sensitivity target. On the other hand, a lower bound on cosine similarity of \(0.7\) generally returns a good sensitivity tradeoff (see Figure~\ref{fig:pr_ivfpq}).
+
+In addition to technical evaluations and improvements, future work should also consider the implications of using computed alignments as the training and benchmark target. As ProtSearch is trained solely on alignments generated by MMseqs2, the fact that it outperforms MMseqs2 on agreement with a Smith-Waterman reference is remarkable. However, this does not necessarily carry true biological significance. The Smith-Waterman algorithm, while being the standard for homology search, does not always correctly identify remote homology, especially in the twilight zone~\cite{10.1093/protein/12.2.85}. The same consideration should be applied to the precision-recall measurements above: While PR performance of ProtSearch is significantly higher than that of MMseqs2, this does not necessarily imply that ProtSearch is more sensitive to protein homology. Whether this is truly the case should be extensively tested and verified across protein families, such as Pfam, or on structural databases such as SCOPe~\cite{andreeva2021scope} or CATH~\cite{10.1093/nar/gku947}.
+
+Another consideration for future work is evaluating whether the model identifies sequence-level signatures arising from structural constraints. For instance, the \(\alpha\)-helices are the most common secondary structure found in proteins, and are chemically stabilized by hydrogen bonds between the carbonyl oxygen of amino acid residue \(i\) and the amide hydrogen of residue \(i+4\). If the encoder captures this pattern, it is expected that the embedding at position \(i\) exhibits a strong correlation with the embedding at position \(i+4\). Similarly, amphipathic \(\alpha\)-helices exhibit periodic arrangements of hydrophobic and hydrophilic residues, where hydrophilic residues appear every second or third position, while hydrophobic side chains appear every third or fourth, forming opposite surfaces. If the encoder captures such patterns, this may be observable as recurring patterns or correlations in the embeddings across fixed positional offsets. Detecting whether the model represents these sequence-level patterns would provide stronger evidence that structural constraints are implicitly learned from sequential data. This, in turn, would open a new avenue for structural applications, e.g. domain-based search, local structural alignment, or active-site comparison.
+
+%%%%<
+
+%bibliography
+\newpage
+\small
+% change the name of the bib-file to get your own bibliography
+\begin{comment}
+\bibliographystyle{unsrt}
+\bibliography{template}
+\normalsize
+\end{comment}
+%\begin{comment}
+\printbibliography
+%\end{comment}
+
+%%%%>
+% appendix
+
+\appendix
+\noappendicestocpagenum
+\addappheadtotoc
+\begin{comment}
+\Chapter{Supplementary Methods}
+\end{comment}
+
+
+\Chapter{Supplementary Data}
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\(k\) & \(s_{min}\) & Recall & Precision & \(k\) & \(s_{min}\) & Recall & Precision \\
+\hline
+1&0.4&0.172&0.126&16&0.3&0.599&0.026\\
+1&0.5&0.172&0.126&16&0.4&0.599&0.026\\
+1&0.6&0.164&0.239&16&0.5&0.595&0.029\\
+1&0.7&0.128&0.578&16&0.6&0.550&0.124\\
+1&0.75&0.099&0.714&16&0.7&0.465&0.370\\
+1&0.8&0.070&0.809&32&0.3&0.711&0.016\\
+1&0.85&0.040&0.887&32&0.4&0.711&0.016\\
+1&0.9&0.017&0.959&32&0.5&0.702&0.019\\
+2&0.3&0.259&0.092&32&0.6&0.645&0.101\\
+2&0.4&0.259&0.092&32&0.7&0.558&0.316\\
+2&0.5&0.259&0.093&64&0.3&0.793&0.009\\
+2&0.6&0.245&0.208&64&0.4&0.793&0.009\\
+2&0.7&0.192&0.535&64&0.5&0.774&0.013\\
+4&0.3&0.363&0.063&64&0.6&0.707&0.080\\
+4&0.4&0.363&0.063&64&0.7&0.626&0.267\\
+4&0.5&0.362&0.064&128&0.3&0.847&0.005\\
+4&0.6&0.340&0.177&128&0.4&0.847&0.005\\
+4&0.7&0.271&0.483&128&0.5&0.814&0.0010\\
+8&0.3&0.481&0.041&128&0.6&0.736&0.062\\
+8&0.4&0.481&0.041&128&0.7&0.662&0.223\\
+8&0.5&0.479&0.043&&&&\\
+8&0.6&0.446&0.149&&&&\\
+8&0.7&0.365&0.426&&&&\\
+\hline
+\end{tabular}
+\caption{Collected precision-recall measurements for ProtSeachFlat.}
+\label{tab:pr_flat}
+\end{center}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\(k\) & \(s_{min}\) & Recall & Precision & \(k\) & \(s_{min}\) & Recall & Precision \\
+\hline
+1&0.4&0.135&0.249&16&0.3&0.579&0.048\\
+1&0.5&0.135&0.254&16&0.4&0.579&0.048\\
+1&0.6&0.124&0.404&16&0.5&0.575&0.057\\
+1&0.7&0.078&0.675&16&0.6&0.530&0.170\\
+1&0.8&0.027&0.849&16&0.7&0.405&0.406\\
+1&0.9&0.005&0.956&32&0.3&0.692&0.028\\
+2&0.3&0.218&0.177&32&0.4&0.692&0.028\\
+2&0.4&0.218&0.177&32&0.5&0.684&0.037\\
+2&0.5&0.217&0.183&32&0.6&0.632&0.129\\
+2&0.6&0.198&0.334&32&0.7&0.508&0.337\\
+2&0.7&0.130&0.612&64&0.3&0.774&0.015\\
+4&0.3&0.323&0.1204&64&0.4&0.774&0.015\\
+4&0.4&0.323&0.1204&64&0.5&0.758&0.024\\
+4&0.5&0.322&0.127&64&0.6&0.695&0.094\\
+4&0.6&0.295&0.271&64&0.7&0.581&0.271\\
+4&0.7&0.203&0.546&128&0.3&0.823&0.008\\
+8&0.3&0.450&0.079&128&0.4&0.822&0.008\\
+8&0.4&0.450&0.079&128&0.5&0.794&0.015\\
+8&0.5&0.448&0.087&128&0.6&0.721&0.067\\
+8&0.6&0.411&0.218&128&0.7&0.615&0.213\\
+8&0.7&0.299&0.478&&&&\\
+\hline
+\end{tabular}
+\caption{Collected precision-recall measurements for ProtSeachIVFPQ.}
+\label{tab:pr_ivfpq}
+\end{center}
+\end{table}
+
+%%%%<
+
+\Assertion
+\end{document}
